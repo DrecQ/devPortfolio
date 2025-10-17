@@ -317,8 +317,10 @@ const route = useRoute()
 const colorMode = useColorMode()
 const { locale, t } = useI18n()
 
+// État du menu mobile
 const showMobileMenu = ref(false)
 const mobileMenuVisible = ref(false)
+const isTransitioning = ref(false)
 
 const availableLanguages = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
@@ -348,26 +350,35 @@ const toggleTheme = () => {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
 }
 
+// Logique corrigée pour le menu mobile
 const toggleMobileMenu = async () => {
+  if (isTransitioning.value) return
+  
+  isTransitioning.value = true
+  
   if (showMobileMenu.value) {
+    // Fermer le menu
     mobileMenuVisible.value = false
-    setTimeout(() => {
-      showMobileMenu.value = false
-    }, 300)
+    await new Promise(resolve => setTimeout(resolve, 300))
+    showMobileMenu.value = false
   } else {
+    // Ouvrir le menu
     showMobileMenu.value = true
     await nextTick()
-    setTimeout(() => {
-      mobileMenuVisible.value = true
-    }, 10)
+    mobileMenuVisible.value = true
   }
+  
+  isTransitioning.value = false
 }
 
-const closeMobileMenu = () => {
+const closeMobileMenu = async () => {
+  if (isTransitioning.value || !showMobileMenu.value) return
+  
+  isTransitioning.value = true
   mobileMenuVisible.value = false
-  setTimeout(() => {
-    showMobileMenu.value = false
-  }, 300)
+  await new Promise(resolve => setTimeout(resolve, 300))
+  showMobileMenu.value = false
+  isTransitioning.value = false
 }
 
 // Fermer le menu mobile quand la route change
@@ -384,12 +395,21 @@ const handleResize = () => {
   }
 }
 
+// Gestion des événements clavier
+const handleKeydown = (event) => {
+  if (event.key === 'Escape' && showMobileMenu.value) {
+    closeMobileMenu()
+  }
+}
+
 onMounted(() => {
   window.addEventListener('resize', handleResize)
+  window.addEventListener('keydown', handleKeydown)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
+  window.removeEventListener('keydown', handleKeydown)
 })
 </script>
 
