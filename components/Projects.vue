@@ -171,35 +171,33 @@ const projects = [
     slug: 'gestion-projecteur',
     description: 'API permettant la gestion des projecteurs dans les établissements',
     category: 'backend',
-    technologies: ['Node.js'],
+    technologies: ['Node.js', 'Express', 'MySQL', 'DotEnv'],
     status: 'completed',
     statusLabel: 'Terminé',
-    demoUrl: 'https://demo.example.com',
     githubUrl: 'https://github.com/DrecQ/Systeme_de_gestion_des_projecteurs'
   },
   {
     id: 2,
-    title: 'TaskFlow Dashboard',
-    slug: 'taskflow-dashboard',
-    description: 'Dashboard de gestion de projets avec système de collaboration en temps réel',
-    category: 'web-app',
-    technologies: ['React', 'Next.js', 'TypeScript', 'PostgreSQL'],
+    title: 'Gestion des notes etudiants LMD',
+    slug: 'gestion-notes-lmd',
+    description: 'API avec TDD pour la gestion des notes des étudiants selon le système LMD',
+    category: 'backend',
+    technologies: ['PHP', 'Laravel', 'MySQL'],
     status: 'completed',
     statusLabel: 'Terminé',
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com/user/project'
+    githubUrl: 'https://github.com/DrecQ/systeme_de_gestion_des_notes_lmd'
   },
   {
     id: 3,
-    title: 'Interface Mobile',
-    slug: 'ui-mobile',
-    description: 'Interface utilisateur moderne pour application mobile',
+    title: 'Projet Octobre Rose',
+    slug: 'projet-octobre-rose',
+    description: 'Site statique de sensibilisation sur le cancer du sein',
     category: 'frontend',
-    technologies: ['React Native', 'Expo', 'Styled Components'],
-    status: 'in-progress',
-    statusLabel: 'En cours',
-    demoUrl: null,
-    githubUrl: 'https://github.com/user/project'
+    technologies: ['Nuxt.Js', 'Tailwind css'],
+    status: 'completed',
+    statusLabel: 'Terminé',
+    demoUrl: 'https://octobreroseprojettest.netlify.app/',
+    githubUrl: 'https://github.com/DrecQ/projet_Octobre_rose'
   },
   {
     id: 4,
@@ -215,27 +213,26 @@ const projects = [
   },
   {
     id: 5,
-    title: 'API E-commerce',
-    slug: 'api-ecommerce',
-    description: 'API robuste pour e-commerce avec authentification et paiements',
-    category: 'backend',
-    technologies: ['Node.js', 'Express', 'MongoDB', 'JWT'],
-    status: 'planning',
-    statusLabel: 'Planifié',
-    demoUrl: 'https://demo.example.com',
-    githubUrl: null
+    title: 'Météo Bénin',
+    slug: 'app-météo-bénin',
+    description: 'Application web de vulgarisation des concepts météorologiques pour le Bénin',
+    category: 'web-app',
+    technologies: ['Nuxt.Js', 'MySQl', 'Prisma'],
+    status: 'in-progress',
+    statusLabel: 'Pas fini',
+    githubUrl: 'https://github.com/DrecQ/App_Meteo_Frontend'
   },
   {
     id: 6,
-    title: 'Service de Notifications',
-    slug: 'notification-service',
-    description: 'Microservice de notifications en temps réel multi-canal',
-    category: 'backend',
-    technologies: ['Python', 'FastAPI', 'Redis', 'PostgreSQL'],
-    status: 'completed',
-    statusLabel: 'Terminé',
-    demoUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com/user/project'
+    title: 'Mes FLAGS',
+    slug: 'mes-flags',
+    description: 'Application web pour permettre aux utilisateurs de découvrir les préférences les autres utilisateurs',
+    category: 'web-app',
+    technologies: ['NuxtJs', 'Laravel', 'NodeJs', 'MySQL'],
+    status: 'in-progress',
+    statusLabel: 'En cours',
+    demoUrl: '#',
+    githubUrl: '#'
   }
 ]
 

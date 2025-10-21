@@ -14,7 +14,7 @@
         </NuxtLink>
         
         <!-- Navigation desktop épurée avec meilleurs espaces -->
-        <nav class="hidden md:flex items-center space-x-1">
+        <nav class="hidden md:flex items-center space-x-3">
           <NuxtLink 
             v-for="link in links" 
             :key="link.to"
