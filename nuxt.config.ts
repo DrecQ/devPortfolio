@@ -12,7 +12,8 @@ compatibilityDate: "2024-11-01",
   },
   modules: [
     '@nuxtjs/i18n',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    '@nuxt/image'
   ],
   i18n: {
     locales: ['en', 'fr'],

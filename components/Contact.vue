@@ -193,19 +193,25 @@ const contactInfo = [
   {
     type: 'email',
     label: 'Email',
-    value: 'contact@monportfolio.com',
+    value: 'quistevaristecredo@gmail.com',
     icon: 'heroicons:envelope'
   },
   {
     type: 'phone',
     label: 'Téléphone',
-    value: '+33 6 12 34 56 78',
+    value: '+229 01 95 30 59 68',
+    icon: 'heroicons:phone'
+  },
+    {
+    type: 'phone',
+    label: 'WhatsApp',
+    value: '+229 95 30 59 68',
     icon: 'heroicons:phone'
   },
   {
     type: 'location',
     label: 'Localisation',
-    value: 'Paris, France',
+    value: 'Cotonou, Benin',
     icon: 'heroicons:map-pin'
   }
 ]
@@ -215,22 +221,22 @@ const socialLinks = [
   { 
     name: 'GitHub', 
     icon: 'simple-icons:github', 
-    url: 'https://github.com' 
+    url: 'https://github.com/DrecQ' 
   },
   { 
     name: 'LinkedIn', 
     icon: 'simple-icons:linkedin', 
-    url: 'https://linkedin.com' 
+    url: 'https://www.linkedin.com/in/evariste-credo-quist-44b177386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' 
   },
   { 
     name: 'X', 
     icon: 'simple-icons:x', 
-    url: 'https://x.com' 
+    url: 'https://x.com/drec_quist?t=sswvVIyxnMCfbKjZU2lalA&s=09' 
   },
   { 
-    name: 'Instagram', 
+    name: 'Facebook', 
     icon: 'simple-icons:instagram', 
-    url: 'https://instagram.com' 
+    url: 'https://www.facebook.com/share/1BwNiNUamG/' 
   }
 ]
 

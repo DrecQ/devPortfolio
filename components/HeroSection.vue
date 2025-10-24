@@ -15,7 +15,13 @@
             <!-- Photo de profil - VISIBLE APRÈS LE BADGE SUR MOBILE -->
             <div class="w-48 h-48 lg:w-56 lg:h-56 rounded-full border-4 border-white/20 mb-6 overflow-hidden shadow-2xl lg:block hidden">
               <div class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                <Icon name="heroicons:user" class="w-20 h-20 text-white/80" />
+                <NuxtImg 
+                  src="/anonymDev.jpg" 
+                  alt="Photo anonyme d'Evariste Credo" 
+                  width="224" 
+                  height="224" 
+                  class="object-cover w-full h-full"
+                />
               </div>
             </div>
             
@@ -56,7 +62,13 @@
             <!-- Photo de profil - MOBILE SEULEMENT (après le badge) -->
             <div class="w-32 h-32 rounded-full border-4 border-white/20 mb-6 overflow-hidden shadow-2xl mx-auto lg:hidden">
               <div class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                <Icon name="heroicons:user" class="w-12 h-12 text-white/80" />
+                <NuxtImg 
+                  src="/anonymDev.jpg" 
+                  alt="Photo anonyme d'Evariste Credo" 
+                  width="224" 
+                  height="224" 
+                  class="object-cover w-full h-full"
+                />
               </div>
             </div>
             
@@ -72,15 +84,15 @@
 
             <!-- Description -->
             <p class="text-lg text-white/80 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Je conçois et développe des applications web modernes avec un focus sur l'expérience utilisateur et les performances.
+              Je suis un développeur web junior, passionné par la tech, qui apprend et conçoit des solutions modernes, performantes et solides pour offrir la meilleure expérience utilisateur possible.
             </p>
 
             <!-- Compétences rapides -->
             <div class="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
               <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-lg text-sm border border-blue-500/30">Vue.js</span>
-              <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-lg text-sm border border-purple-500/30">React</span>
+              <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-lg text-sm border border-purple-500/30">Nuxt.js</span>
               <span class="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-lg text-sm border border-cyan-500/30">Node.js</span>
-              <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-lg text-sm border border-green-500/30">UI/UX</span>
+              <span class="px-3 py-1 bg-green-500/20 text-green-300 rounded-lg text-sm border border-green-500/30">Laravel</span>
             </div>
 
             <!-- Terminal compact - MOBILE SEULEMENT (après les technos) -->
@@ -135,7 +147,7 @@
 
 <script setup>
 // États simples pour les animations
-const titles = ['Développeur Full Stack', 'Designer UI/UX', 'Architecte Web']
+const titles = ['Développeur web', 'Architecte Logiciel', 'IA Enthusiast']
 const commands = [
   'npm run dev',
   'git status', 

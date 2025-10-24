@@ -177,13 +177,12 @@
 <script setup>
 // Données pour les compétences
 const skills = [
-  { name: 'Vue.js / Nuxt.js' },
+  { name: 'Nuxt.js' },
   { name: 'Node.js' },
-  { name: 'Laravel / PHP' },
-  { name: 'TypeScript' },
+  { name: 'Laravel' },
+  { name: 'PHP' },
   { name: 'Tailwind CSS' },
   { name: 'MySQL' },
-  { name: 'MongoDB' },
   { name: 'Docker' },
   { name: 'Linux' },
   { name: 'Git / GitHub' },
