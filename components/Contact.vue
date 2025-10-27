@@ -235,7 +235,7 @@ const socialLinks = [
   },
   { 
     name: 'Facebook', 
-    icon: 'simple-icons:instagram', 
+    icon: 'simple-icons:facebook', 
     url: 'https://www.facebook.com/share/1BwNiNUamG/' 
   }
 ]

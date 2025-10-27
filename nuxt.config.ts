@@ -13,13 +13,15 @@ compatibilityDate: "2024-11-01",
   modules: [
     '@nuxtjs/i18n',
     '@nuxtjs/color-mode',
-    '@nuxt/image'
+    '@nuxt/image',
+    'nuxt-icon',
   ],
   i18n: {
-    locales: ['en', 'fr'],
     defaultLocale: 'fr',
-    strategy: 'prefix_except_default',
-    vueI18n: './i18n.config.ts'
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'fr', name: 'Français', file: 'fr.json' }
+    ]
   },
   colorMode: {
     preference: 'system',

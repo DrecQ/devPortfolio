@@ -37,17 +37,22 @@ const socialLinks = [
   { 
     name: 'GitHub', 
     icon: 'simple-icons:github', 
-    url: 'https://github.com' 
+    url: 'https://github.com/DrecQ' 
   },
   { 
     name: 'LinkedIn', 
     icon: 'simple-icons:linkedin', 
-    url: 'https://linkedin.com' 
+    url: 'https://www.linkedin.com/in/evariste-credo-quist-44b177386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' 
   },
   { 
-    name: 'Email', 
-    icon: 'heroicons:envelope', 
-    url: 'mailto:contact@portfolio.com' 
+    name: 'X', 
+    icon: 'simple-icons:x', 
+    url: 'https://x.com/drec_quist?t=sswvVIyxnMCfbKjZU2lalA&s=09' 
+  },
+  { 
+    name: 'Facebook', 
+    icon: 'simple-icons:facebook', 
+    url: 'https://www.facebook.com/share/1BwNiNUamG/' 
   }
 ]
 </script>

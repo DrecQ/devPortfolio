@@ -215,7 +215,7 @@
 import { ref, computed, nextTick, watch } from 'vue'
 
 const route = useRoute()
-const { locale, t } = useI18n()
+const { locale, setLocale } = useI18n()
 
 // État du menu mobile - CORRIGÉ
 const showMobileMenu = ref(false)

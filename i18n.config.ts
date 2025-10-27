@@ -1,18 +1,14 @@
-export default {
-  legacy: false,
-  locale: 'fr',
-  messages: {
-    en: {
-      home: 'Home',
-      about: 'About',
-      projects: 'Projects',
-      contact: 'Contact'
-    },
-    fr: {
-      home: 'Accueil',
-      about: 'À propos',
-      projects: 'Projets',
-      contact: 'Contact'
-    }
+export default defineNuxtConfig({
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        language: 'en-US'
+      },
+      {
+        code: 'fr',
+        language: 'fr-FR'
+      }
+    ]
   }
-}
+})
