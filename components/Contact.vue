@@ -203,7 +203,7 @@ const contactInfo = [
     icon: 'heroicons:phone'
   },
     {
-    type: 'phone',
+    type: 'whatsApp',
     label: 'WhatsApp',
     value: '+229 95 30 59 68',
     icon: 'heroicons:phone'
