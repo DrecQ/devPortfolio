@@ -137,25 +137,34 @@
                   <label for="subject" class="block text-white/90 text-sm font-medium mb-2">
                     Sujet
                   </label>
-                  <select
-                    id="subject"
-                    v-model="form.subject"
-                    name="subject"
-                    class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors appearance-none bg-select-arrow bg-no-repeat bg-right-4 bg-center"
-                    :class="errors.subject ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
-                    @change="clearError('subject')"
-                  >
-                    <option value="" disabled selected class="text-slate-600">Sélectionnez un sujet</option>
-                    <option value="projet" class="text-slate-900">Nouveau projet</option>
-                    <option value="collaboration" class="text-slate-900">Collaboration</option>
-                    <option value="question" class="text-slate-900">Question générale</option>
-                    <option value="autre" class="text-slate-900">Autre</option>
-                  </select>
-                  <div v-if="errors.subject" class="text-red-400 text-xs mt-1">
-                      {{ errors.subject }}
+                  <div class="relative">
+                    <select
+                      id="subject"
+                      v-model="form.subject"
+                      name="subject"
+                      class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors appearance-none pr-12"
+                      :class="errors.subject ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
+                      @change="clearError('subject')"
+                    >
+                      <option value="" disabled selected class="text-slate-600">Sélectionnez un sujet</option>
+                      <option value="projet" class="text-slate-900">Nouveau projet</option>
+                      <option value="collaboration" class="text-slate-900">Collaboration</option>
+                      <option value="question" class="text-slate-900">Question générale</option>
+                      <option value="autre" class="text-slate-900">Autre</option>
+                    </select>
+                    <!-- Flèche dégradée plus stylisée -->
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                      <div class="w-6 h-6 bg-gradient-to-br from-blue-400 to-purple-500 rounded flex items-center justify-center">
+                        <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
                     </div>
-                </div>
-                
+                  </div>
+                  <div v-if="errors.subject" class="text-red-400 text-xs mt-1">
+                    {{ errors.subject }}
+                  </div>
+              </div>
                 <!-- Message -->
                 <div>
                   <label for="message" class="block text-white/90 text-sm font-medium mb-2">
@@ -275,7 +284,7 @@ const socialLinks = [
 
 // Statistiques
 const stats = [
-  { label: 'Projets réalisés', value: '15+' },
+  { label: 'Projets réalisés', value: '...' },
   { label: 'Satisfaction client', value: '100%' }
 ]
 
