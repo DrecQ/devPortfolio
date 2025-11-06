@@ -27,5 +27,10 @@ compatibilityDate: "2024-11-01",
     preference: 'system',
     fallback: 'light',
     classSuffix: ''
+  }, 
+   runtimeConfig: {
+    public: {
+      formsubmitUrl: 'https://formsubmit.co/ajax/quistevaristecredo@gmail.com'
+    }
   }
 })

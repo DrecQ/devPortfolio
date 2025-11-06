@@ -99,10 +99,16 @@
                       id="name"
                       v-model="form.name"
                       type="text"
-                      required
-                      class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30 transition-colors"
+                      name="name"
+                      class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors"
+                      :class="errors.name ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
                       placeholder="Votre nom"
+                      @blur="validateField('name')"
+                      @input="clearError('name')"
                     />
+                    <div v-if="errors.name" class="text-red-400 text-xs mt-1">
+                      {{ errors.name }}
+                    </div>
                   </div>
                   
                   <div>
@@ -113,10 +119,16 @@
                       id="email"
                       v-model="form.email"
                       type="email"
-                      required
-                      class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30 transition-colors"
+                      name="email"
+                      class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors"
+                      :class="errors.email ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
                       placeholder="votre@email.com"
+                      @blur="validateField('email')"
+                      @input="clearError('email')"
                     />
+                    <div v-if="errors.email" class="text-red-400 text-xs mt-1">
+                      {{ errors.email }}
+                    </div>
                   </div>
                 </div>
 
@@ -128,15 +140,20 @@
                   <select
                     id="subject"
                     v-model="form.subject"
-                    required
-                    class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30 transition-colors"
+                    name="subject"
+                    class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors appearance-none bg-select-arrow bg-no-repeat bg-right-4 bg-center"
+                    :class="errors.subject ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
+                    @change="clearError('subject')"
                   >
-                    <option value="" disabled>Sélectionnez un sujet</option>
-                    <option value="projet">Nouveau projet</option>
-                    <option value="collaboration">Collaboration</option>
-                    <option value="question">Question générale</option>
-                    <option value="autre">Autre</option>
+                    <option value="" disabled selected class="text-slate-600">Sélectionnez un sujet</option>
+                    <option value="projet" class="text-slate-900">Nouveau projet</option>
+                    <option value="collaboration" class="text-slate-900">Collaboration</option>
+                    <option value="question" class="text-slate-900">Question générale</option>
+                    <option value="autre" class="text-slate-900">Autre</option>
                   </select>
+                  <div v-if="errors.subject" class="text-red-400 text-xs mt-1">
+                      {{ errors.subject }}
+                    </div>
                 </div>
                 
                 <!-- Message -->
@@ -147,17 +164,23 @@
                   <textarea
                     id="message"
                     v-model="form.message"
+                    name="message"
                     rows="5"
-                    required
-                    class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30 transition-colors resize-none"
+                    class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors resize-none"
+                    :class="errors.message ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
                     placeholder="Décrivez votre projet ou posez votre question..."
+                    @blur="validateField('message')"
+                    @input="clearError('message')"
                   ></textarea>
+                  <div v-if="errors.message" class="text-red-400 text-xs mt-1">
+                      {{ errors.message }}
+                    </div>
                 </div>
                 
                 <!-- Bouton d'envoi -->
                 <button
                   type="submit"
-                  :disabled="isSubmitting"
+                  :disabled="isSubmitting || !isFormValid"
                   class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span v-if="!isSubmitting">Envoyer le message</span>
@@ -170,13 +193,21 @@
                   <div v-else class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                 </button>
                 
-                <!-- Message de succès -->
+                <!-- Messages de statut -->
                 <div 
                   v-if="showSuccess"
                   class="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-center"
                 >
                   <Icon name="heroicons:check-circle" class="w-4 h-4 inline mr-2" />
                   Message envoyé avec succès !
+                </div>
+                
+                <div 
+                  v-if="showError"
+                  class="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-center"
+                >
+                  <Icon name="heroicons:exclamation-triangle" class="w-4 h-4 inline mr-2" />
+                  {{ errorMessage }}
                 </div>
               </form>
             </div>
@@ -188,6 +219,8 @@
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
+
 // Données de contact
 const contactInfo = [
   {
@@ -202,7 +235,7 @@ const contactInfo = [
     value: '+229 01 95 30 59 68',
     icon: 'heroicons:phone'
   },
-    {
+  {
     type: 'whatsApp',
     label: 'WhatsApp',
     value: '+229 95 30 59 68',
@@ -254,39 +287,173 @@ const form = ref({
   message: ''
 })
 
+const errors = ref({})
 const isSubmitting = ref(false)
 const showSuccess = ref(false)
+const showError = ref(false)
+const errorMessage = ref('')
+
+// Validation du formulaire
+const isFormValid = computed(() => {
+  return Object.keys(errors.value).length === 0 && 
+         form.value.name && 
+         form.value.email && 
+         form.value.subject && 
+         form.value.message &&
+         form.value.message.length >= 10
+})
+
+// Validation des champs
+const validateField = (field) => {
+  const value = form.value[field]
+  const newErrors = { ...errors.value }
+
+  switch (field) {
+    case 'name':
+      if (!value.trim()) {
+        newErrors.name = 'Le nom est requis'
+      } else if (value.trim().length < 2) {
+        newErrors.name = 'Le nom doit contenir au moins 2 caractères'
+      } else {
+        delete newErrors.name
+      }
+      break
+
+    case 'email':
+      if (!value.trim()) {
+        newErrors.email = 'L\'email est requis'
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        newErrors.email = 'Veuillez entrer un email valide'
+      } else {
+        delete newErrors.email
+      }
+      break
+
+    case 'subject':
+      if (!value) {
+        newErrors.subject = 'Veuillez sélectionner un sujet'
+      } else {
+        delete newErrors.subject
+      }
+      break
+
+    case 'message':
+      if (!value.trim()) {
+        newErrors.message = 'Le message est requis'
+      } else if (value.trim().length < 10) {
+        newErrors.message = 'Le message doit contenir au moins 10 caractères'
+      } else {
+        delete newErrors.message
+      }
+      break
+  }
+
+  errors.value = newErrors
+}
+
+// Effacer l'erreur d'un champ
+const clearError = (field) => {
+  if (errors.value[field]) {
+    const newErrors = { ...errors.value }
+    delete newErrors[field]
+    errors.value = newErrors
+  }
+}
+
+// Validation complète du formulaire
+const validateForm = () => {
+  validateField('name')
+  validateField('email')
+  validateField('subject')
+  validateField('message')
+  return Object.keys(errors.value).length === 0
+}
 
 // Gestion de l'envoi du formulaire
 const handleSubmit = async () => {
+  if (!validateForm()) {
+    errorMessage.value = 'Veuillez corriger les erreurs dans le formulaire'
+    showError.value = true
+    setTimeout(() => {
+      showError.value = false
+    }, 5000)
+    return
+  }
+  
   isSubmitting.value = true
+  showError.value = false
   
   try {
-    // Simulation d'envoi
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    // Utilisation de FormSubmit.co pour envoyer l'email
+    const response = await fetch('https://formsubmit.co/ajax/quistevaristecredo@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: form.value.name.trim(),
+        email: form.value.email.trim(),
+        subject: form.value.subject,
+        message: form.value.message.trim(),
+        _subject: `Nouveau message de ${form.value.name} - ${getSubjectLabel(form.value.subject)}`,
+        _template: 'table',
+        _captcha: 'false',
+        _replyto: form.value.email.trim()
+      })
+    })
     
-    // Réinitialiser le formulaire
-    form.value = {
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
+    if (response.ok) {
+      // Réinitialiser le formulaire
+      form.value = {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      }
+      
+      // Afficher le message de succès
+      showSuccess.value = true
+      setTimeout(() => {
+        showSuccess.value = false
+      }, 5000)
+      
+    } else {
+      throw new Error('Erreur lors de l\'envoi du formulaire')
     }
-    
-    // Afficher le message de succès
-    showSuccess.value = true
-    setTimeout(() => {
-      showSuccess.value = false
-    }, 4000)
     
   } catch (error) {
     console.error('Erreur lors de l\'envoi:', error)
+    errorMessage.value = 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.'
+    showError.value = true
+    setTimeout(() => {
+      showError.value = false
+    }, 5000)
   } finally {
     isSubmitting.value = false
   }
 }
+
+// Helper pour obtenir le libellé du sujet
+const getSubjectLabel = (subject) => {
+  const subjects = {
+    'projet': 'Nouveau projet',
+    'collaboration': 'Collaboration',
+    'question': 'Question générale',
+    'autre': 'Autre'
+  }
+  return subjects[subject] || 'Contact portfolio'
+}
 </script>
 
 <style scoped>
-/* Styles simples et épurés */
+/* Style pour la flèche du select */
+.bg-select-arrow {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2393a5fb' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* Pour cacher la flèche par défaut sur certains navigateurs */
+select::-ms-expand {
+  display: none;
+}
 </style>
