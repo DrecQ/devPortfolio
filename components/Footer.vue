@@ -4,8 +4,8 @@
       <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         <!-- Signature -->
         <div class="flex items-center space-x-4">
-          <NuxtLink to="/" class="text-xl font-bold text-white">
-            QEC
+          <NuxtLink to="/" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Portfolio
           </NuxtLink>
           <div class="text-slate-400 text-sm">
             &copy; {{ currentYear }} Evariste Credo
@@ -13,13 +13,14 @@
         </div>
 
         <!-- Réseaux sociaux -->
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-3">
           <a 
             v-for="social in socialLinks" 
             :key="social.name"
             :href="social.url"
             target="_blank"
-            class="text-slate-400 hover:text-white transition-colors duration-200"
+            class="p-2 rounded-lg text-slate-400 hover:text-white transition-all duration-200 hover:scale-110"
+            :class="social.hoverClass"
             :aria-label="social.name"
           >
             <Icon :name="social.icon" class="w-5 h-5" />
@@ -37,22 +38,26 @@ const socialLinks = [
   { 
     name: 'GitHub', 
     icon: 'simple-icons:github', 
-    url: 'https://github.com/DrecQ' 
+    url: 'https://github.com/DrecQ',
+    hoverClass: 'hover:bg-gray-800'
   },
   { 
     name: 'LinkedIn', 
     icon: 'simple-icons:linkedin', 
-    url: 'https://www.linkedin.com/in/evariste-credo-quist-44b177386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' 
+    url: 'https://www.linkedin.com/in/evariste-credo-quist-44b177386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    hoverClass: 'hover:bg-blue-600'
   },
   { 
     name: 'X', 
     icon: 'simple-icons:x', 
-    url: 'https://x.com/drec_quist?t=sswvVIyxnMCfbKjZU2lalA&s=09' 
+    url: 'https://x.com/drec_quist?t=sswvVIyxnMCfbKjZU2lalA&s=09',
+    hoverClass: 'hover:bg-black'
   },
   { 
     name: 'Facebook', 
     icon: 'simple-icons:facebook', 
-    url: 'https://www.facebook.com/share/1BwNiNUamG/' 
+    url: 'https://www.facebook.com/share/1BwNiNUamG/',
+    hoverClass: 'hover:bg-blue-500'
   }
 ]
 </script>

@@ -11,18 +11,10 @@ compatibilityDate: "2024-11-01",
     ],
   },
   modules: [
-    '@nuxtjs/i18n',
     '@nuxtjs/color-mode',
     '@nuxt/image',
     'nuxt-icon',
   ],
-  i18n: {
-    defaultLocale: 'fr',
-    locales: [
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'fr', name: 'Français', file: 'fr.json' }
-    ]
-  },
   colorMode: {
     preference: 'system',
     fallback: 'light',

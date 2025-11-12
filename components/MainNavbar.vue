@@ -2,76 +2,72 @@
   <div class="w-full bg-white/95 backdrop-blur-xl shadow-sm border-b border-slate-200/50 sticky top-0 z-50">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
-        <!-- Logo avec dégradé bleu-violet -->
+        <!-- Logo à gauche -->
         <NuxtLink 
           to="/" 
-          class="flex items-center p-2 rounded-lg transition-colors"
+          class="flex items-center p-2 rounded-lg transition-all duration-200 hover:bg-slate-100/50 group"
         >
-          <span class="text-2xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Portfolio
-          </span>
+          <div class="relative">
+            <span class="text-2xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-200">
+              Portfolio
+            </span>
+            <!-- Effet de soulignement au hover -->
+            <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></div>
+          </div>
         </NuxtLink>
         
-        <!-- Navigation desktop avec survol bleu-violet -->
-        <nav class="hidden md:flex items-center space-x-1">
+        <!-- Navigation au centre -->
+        <nav class="hidden md:flex items-center space-x-1 bg-slate-100/50 rounded-2xl p-1.5 backdrop-blur-sm border border-slate-200/30">
           <NuxtLink 
             v-for="link in links" 
             :key="link.to"
             :to="link.to"
-            class="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+            class="px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 relative group/nav"
             :class="{
-              'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-sm': isActive(link.to),
-              'text-slate-700 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600': !isActive(link.to)
+              'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-500/25 transform scale-105': isActive(link.to),
+              'text-slate-600 hover:text-slate-800 hover:bg-white/80 hover:shadow-md': !isActive(link.to)
             }"
           >
-            {{ $t(link.key) }}
+            <span class="relative z-10">{{ link.label }}</span>
+            
+            <!-- Effet de fond animé pour les liens inactifs -->
+            <div 
+              v-if="!isActive(link.to)"
+              class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl opacity-0 group-hover/nav:opacity-100 transition-all duration-300 transform scale-95 group-hover/nav:scale-100"
+            ></div>
           </NuxtLink>
         </nav>
         
-        <!-- Contrôles droite -->
-        <div class="flex items-center space-x-2">
-          <!-- Sélecteur de langue avec survol bleu-violet -->
-          <div class="relative group hidden sm:block">
-            <button 
-              class="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 transition-all duration-200"
-              :class="{
-                'text-white bg-gradient-to-r from-blue-600 to-purple-600': isLanguageDropdownOpen,
-                'hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600': !isLanguageDropdownOpen
-              }"
-              @mouseenter="isLanguageDropdownOpen = true"
-              @mouseleave="isLanguageDropdownOpen = false"
+        <!-- CTA à droite -->
+        <div class="flex items-center space-x-3">
+          <!-- Réseaux sociaux -->
+          <div class="hidden md:flex items-center space-x-1">
+            <a 
+              v-for="social in socialLinks"
+              :key="social.name"
+              :href="social.url"
+              target="_blank"
+              class="p-2.5 rounded-xl text-slate-600 hover:text-white transition-all duration-200 group/social"
+              :class="social.hoverClass"
+              :title="social.name"
             >
-              <span>{{ currentLanguage.flag }}</span>
-              <span class="font-medium">{{ currentLanguage.code.toUpperCase() }}</span>
-            </button>
-            
-            <div 
-              class="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-slate-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-              @mouseenter="isLanguageDropdownOpen = true"
-              @mouseleave="isLanguageDropdownOpen = false"
-            >
-              <div class="p-1">
-                <button 
-                  v-for="lang in availableLanguages" 
-                  :key="lang.code"
-                  @click="setLanguage(lang.code)"
-                  class="flex items-center w-full px-3 py-2 text-sm rounded-md transition-all duration-200"
-                  :class="{ 
-                    'text-white bg-gradient-to-r from-blue-600 to-purple-600': lang.code === locale,
-                    'text-slate-700 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600': lang.code !== locale
-                  }"
-                >
-                  <span class="mr-2">{{ lang.flag }}</span>
-                  {{ lang.name }}
-                </button>
-              </div>
-            </div>
+              <Icon :name="social.icon" class="w-4 h-4 group-hover/social:scale-110 transition-transform duration-200" />
+            </a>
           </div>
+
+          <!-- Email -->
+          <a 
+            href="mailto:ton@email.com"
+            class="hidden md:flex items-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all duration-200 hover:scale-105 group/email"
+          >
+            <Icon name="heroicons:envelope" class="w-4 h-4 group-hover/email:animate-bounce" />
+            <span>Email</span>
+          </a>
           
-          <!-- Bouton menu mobile avec survol bleu-violet -->
+          <!-- Bouton menu mobile -->
           <button 
             @click="toggleMobileMenu"
-            class="md:hidden p-2 rounded-lg text-slate-700 transition-all duration-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600"
+            class="md:hidden p-2.5 rounded-xl text-slate-700 transition-all duration-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:shadow-lg"
           >
             <div class="w-5 h-5 relative">
               <span 
@@ -92,7 +88,7 @@
       </div>
     </div>
     
-    <!-- Menu mobile avec survol bleu-violet -->
+    <!-- Menu mobile -->
     <Teleport to="body">
       <div 
         v-if="showMobileMenu" 
@@ -100,61 +96,86 @@
       >
         <!-- Backdrop -->
         <div 
-          class="absolute inset-0 bg-black/20"
+          class="absolute inset-0 bg-black/20 backdrop-blur-sm"
           @click="closeMobileMenu"
         ></div>
         
         <!-- Panel mobile -->
         <div 
-          class="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl shadow-lg border border-slate-200 transform transition-transform duration-300 max-h-[70vh] overflow-hidden"
+          class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl rounded-t-3xl shadow-2xl border border-slate-200/50 transform transition-transform duration-300 max-h-[80vh] overflow-hidden"
           :class="mobileMenuVisible ? 'translate-y-0' : 'translate-y-full'"
         >
           <!-- Poignée -->
-          <div class="flex justify-center pt-3 pb-2">
-            <div class="w-12 h-1 bg-slate-300 rounded-full"></div>
+          <div class="flex justify-center pt-4 pb-2">
+            <div class="w-12 h-1.5 bg-slate-300 rounded-full"></div>
+          </div>
+          
+          <!-- En-tête mobile -->
+          <div class="px-6 py-4 border-b border-slate-200/50">
+            <div class="flex items-center justify-between">
+              <span class="text-lg font-bold text-slate-800">Navigation</span>
+              <button 
+                @click="closeMobileMenu"
+                class="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors duration-200"
+              >
+                <Icon name="heroicons:x-mark" class="w-5 h-5" />
+              </button>
+            </div>
           </div>
           
           <!-- Contenu du menu -->
           <div class="overflow-y-auto">
-            <div class="px-4 pb-4 space-y-1">
+            <div class="px-4 py-2 space-y-2">
               <NuxtLink 
                 v-for="link in links" 
                 :key="link.to"
                 :to="link.to"
-                class="flex items-center w-full px-4 py-3 rounded-xl text-base font-medium transition-all duration-200"
+                class="flex items-center w-full px-4 py-4 rounded-2xl text-base font-semibold transition-all duration-200 group/mobile"
                 :class="{
-                  'text-white bg-gradient-to-r from-blue-600 to-purple-600': isActive(link.to),
+                  'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg': isActive(link.to),
                   'text-slate-700 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600': !isActive(link.to)
                 }"
                 @click="closeMobileMenu"
               >
-                <div class="flex items-center space-x-3">
-                  <Icon :name="getLinkIcon(link.to)" class="w-5 h-5" />
-                  <span>{{ $t(link.key) }}</span>
+                <div class="flex items-center space-x-4">
+                  <div class="p-2 rounded-xl bg-white/20 backdrop-blur-sm">
+                    <Icon :name="getLinkIcon(link.to)" class="w-5 h-5" />
+                  </div>
+                  <span class="flex-1">{{ link.label }}</span>
+                  <Icon 
+                    name="heroicons:arrow-right" 
+                    class="w-4 h-4 transition-transform duration-200 group-hover/mobile:translate-x-1"
+                    :class="isActive(link.to) ? 'text-white' : 'text-slate-400 group-hover/mobile:text-white'"
+                  />
                 </div>
               </NuxtLink>
             </div>
             
-            <!-- Langues -->
-            <div class="px-4 pb-4 pt-3 border-t border-slate-200">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-sm font-medium text-slate-600">Langue</span>
-              </div>
-              <div class="flex space-x-2">
-                <button 
-                  v-for="lang in availableLanguages" 
-                  :key="lang.code"
-                  @click="setLanguage(lang.code); closeMobileMenu();"
-                  class="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex-1 justify-center"
-                  :class="{ 
-                    'text-white bg-gradient-to-r from-blue-600 to-purple-600': lang.code === locale,
-                    'text-slate-700 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600': lang.code !== locale
-                  }"
+            <!-- Réseaux sociaux mobile -->
+            <div class="px-4 py-6 border-t border-slate-200/50">
+              <div class="flex justify-center space-x-4 mb-4">
+                <a 
+                  v-for="social in socialLinks"
+                  :key="social.name"
+                  :href="social.url"
+                  target="_blank"
+                  class="p-3 rounded-2xl text-slate-600 hover:text-white transition-all duration-200 group/social"
+                  :class="social.hoverClass"
+                  :title="social.name"
                 >
-                  <span>{{ lang.flag }}</span>
-                  <span>{{ lang.name }}</span>
-                </button>
+                  <Icon :name="social.icon" class="w-5 h-5 group-hover/social:scale-110 transition-transform duration-200" />
+                </a>
               </div>
+              
+              <!-- Email mobile -->
+              <a 
+                href="mailto:ton@email.com"
+                class="flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-base font-semibold rounded-2xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all duration-200 active:scale-95"
+                @click="closeMobileMenu"
+              >
+                <Icon name="heroicons:envelope" class="w-5 h-5 mr-2" />
+                <span>Envoyer un email</span>
+              </a>
             </div>
           </div>
         </div>
@@ -164,26 +185,41 @@
 </template>
 
 <script setup>
-import { ref, computed, nextTick, watch } from 'vue'
+import { ref, nextTick, watch } from 'vue'
 
 const route = useRoute()
-const { locale, setLocale } = useI18n()
 
 // État du menu mobile
 const showMobileMenu = ref(false)
 const mobileMenuVisible = ref(false)
-const isLanguageDropdownOpen = ref(false)
-
-const availableLanguages = [
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'en', name: 'English', flag: '🇺🇸' }
-]
 
 const links = [
-  { to: '/', key: 'Acceuil' },
-  { to: '/about', key: 'A Propos' },
-  { to: '/projects', key: 'Projets' },
-  { to: '/contact', key: 'Contact' }
+  { to: '/', label: 'Accueil' },
+  { to: '/about', label: 'À Propos' },
+  { to: '/projects', label: 'Projets' },
+  { to: '/contact', label: 'Contact' }
+]
+
+// Réseaux sociaux
+const socialLinks = [
+  { 
+    name: 'GitHub', 
+    url: 'https://github.com/DrecQ', 
+    icon: 'simple-icons:github',
+    hoverClass: 'hover:bg-gray-900'
+  },
+  { 
+    name: 'LinkedIn', 
+    url: 'https://www.linkedin.com/in/evariste-credo-quist-44b177386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', 
+    icon: 'simple-icons:linkedin',
+    hoverClass: 'hover:bg-blue-600'
+  },
+  { 
+    name: 'x', 
+    url: 'https://x.com/drec_quist?t=sswvVIyxnMCfbKjZU2lalA&s=09', 
+    icon: 'simple-icons:x',
+    hoverClass: 'hover:bg-sky-500'
+  }
 ]
 
 // Icônes pour le menu mobile
@@ -197,19 +233,11 @@ const getLinkIcon = (path) => {
   return icons[path] || 'heroicons:link'
 }
 
-const currentLanguage = computed(() => {
-  return availableLanguages.find(l => l.code === locale.value) || availableLanguages[0]
-})
-
 const isActive = (path) => {
   return route.path === path
 }
 
-const setLanguage = (lang) => {
-  locale.value = lang
-}
-
-// Logique de menu mobile simplifiée
+// Logique de menu mobile
 const toggleMobileMenu = async () => {
   if (showMobileMenu.value) {
     closeMobileMenu()

@@ -241,7 +241,7 @@ const projects = [
     technologies: ['Node.js', 'Express', 'MySQL', 'DotEnv'],
     status: 'completed',
     statusLabel: 'Terminé',
-    image: '/images/projects/gestion-projecteurs.jpg',
+    image: '/projects/gestion-projecteur.png',
     githubUrl: 'https://github.com/DrecQ/Systeme_de_gestion_des_projecteurs'
   },
   {
@@ -253,7 +253,7 @@ const projects = [
     technologies: ['PHP', 'Laravel', 'MySQL', 'PHPUnit'],
     status: 'completed',
     statusLabel: 'Terminé',
-    image: '/images/projects/gestion-notes-lmd.jpg',
+    image: '/projects/gestion-notes-lmd.png',
     githubUrl: 'https://github.com/DrecQ/systeme_de_gestion_des_notes_lmd'
   },
   {
@@ -278,7 +278,7 @@ const projects = [
     technologies: ['Nuxt.js', 'Tailwind CSS', 'i18n', 'Trivule'],
     status: 'completed',
     statusLabel: 'Terminé',
-    image: '/images/projects/portfolio.jpg',
+    image: '/projects/portfolio.png',
     demoUrl: 'https://demo.example.com',
     githubUrl: 'https://github.com/user/project'
   },
@@ -303,7 +303,7 @@ const projects = [
     technologies: ['NuxtJs', 'Laravel', 'NodeJs', 'MySQL'],
     status: 'in-progress',
     statusLabel: 'En cours',
-    image: '/images/projects/mes-flags.jpg',
+    image: '/projects/telecharger.webp',
     demoUrl: '#',
     githubUrl: '#'
   }
