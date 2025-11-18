@@ -230,6 +230,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 
+
 // Données de contact
 const contactInfo = [
   {

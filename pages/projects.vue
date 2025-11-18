@@ -5,8 +5,10 @@
 </template>
 
 <script setup>
-import { About } from '#components';
-
+// Le script peut rester vide ou tu peux ajouter des interactions
+useSeoMeta({
+  title: 'Mes projets',
+})
 // Votre code JavaScript ici
 </script>
 

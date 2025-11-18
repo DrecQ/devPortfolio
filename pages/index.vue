@@ -5,8 +5,10 @@
 </template>
 
 <script setup>
-import HeroSection from '~/components/HeroSection.vue';
-import { About } from '#components';
+// Le script peut rester vide ou tu peux ajouter des interactions
+useSeoMeta({
+  title: 'Mon portfolio',
+})
 
 // Votre code JavaScript ici
 </script>

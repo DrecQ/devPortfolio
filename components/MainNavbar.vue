@@ -216,7 +216,7 @@ const socialLinks = [
   },
   { 
     name: 'x', 
-    url: 'https://x.com/drec_quist?t=sswvVIyxnMCfbKjZU2lalA&s=09', 
+    url: 'https://x.com/drec_quist?t=sswvVIyxnMCfbKjZU2lalA&s=09',
     icon: 'simple-icons:x',
     hoverClass: 'hover:bg-sky-500'
   }

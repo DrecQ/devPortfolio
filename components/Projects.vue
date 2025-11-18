@@ -219,6 +219,7 @@
 </template>
 
 <script setup>
+
 // Filtres
 const filters = [
   { label: 'Tous', value: 'all' },
@@ -304,8 +305,8 @@ const projects = [
     status: 'in-progress',
     statusLabel: 'En cours',
     image: '/projects/telecharger.webp',
-    demoUrl: '#',
-    githubUrl: '#'
+    demoUrl: '',
+    githubUrl: ''
   }
 ]
 

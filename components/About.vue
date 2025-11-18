@@ -246,6 +246,7 @@
 </template>
 
 <script setup>
+
 // État pour le modal
 const showImageModal = ref(false)
 

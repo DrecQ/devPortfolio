@@ -1,15 +1,14 @@
 <template>
   <div>
-    <About/>
+    <Discover/>
   </div>
 </template>
 
 <script setup>
 // Le script peut rester vide ou tu peux ajouter des interactions
 useSeoMeta({
-  title: 'A propos',
+  title: 'Mon Univers',
 })
-
 // Votre code JavaScript ici
 </script>
 
