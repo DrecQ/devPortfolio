@@ -67,20 +67,20 @@
           <!-- Bouton menu mobile -->
           <button 
             @click="toggleMobileMenu"
-            class="md:hidden p-2.5 rounded-xl text-slate-700 transition-all duration-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:shadow-lg"
+            class="md:hidden p-3 rounded-xl text-slate-700 transition-all duration-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:shadow-lg"
           >
-            <div class="w-5 h-5 relative">
+            <div class="w-6 h-6 relative">
               <span 
-                class="absolute top-1 left-0 w-5 h-0.5 bg-current rounded-full transition-all duration-200"
-                :class="showMobileMenu ? 'rotate-45 top-2' : ''"
+                class="absolute top-1.5 left-0 w-6 h-0.5 bg-current rounded-full transition-all duration-200"
+                :class="showMobileMenu ? 'rotate-45 top-3' : ''"
               ></span>
               <span 
-                class="absolute top-2 left-0 w-5 h-0.5 bg-current rounded-full transition-all duration-200"
+                class="absolute top-3 left-0 w-6 h-0.5 bg-current rounded-full transition-all duration-200"
                 :class="showMobileMenu ? 'opacity-0' : ''"
               ></span>
               <span 
-                class="absolute top-3 left-0 w-5 h-0.5 bg-current rounded-full transition-all duration-200"
-                :class="showMobileMenu ? '-rotate-45 top-2' : ''"
+                class="absolute top-4.5 left-0 w-6 h-0.5 bg-current rounded-full transition-all duration-200"
+                :class="showMobileMenu ? '-rotate-45 top-3' : ''"
               ></span>
             </div>
           </button>
@@ -102,79 +102,69 @@
         
         <!-- Panel mobile -->
         <div 
-          class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl rounded-t-3xl shadow-2xl border border-slate-200/50 transform transition-transform duration-300 max-h-[80vh] overflow-hidden"
+          ref="mobilePanel"
+          class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl rounded-t-3xl shadow-2xl border border-slate-200/50 transform transition-transform duration-300 max-h-[85vh] overflow-hidden"
           :class="mobileMenuVisible ? 'translate-y-0' : 'translate-y-full'"
+          @touchstart="onTouchStart"
+          @touchmove="onTouchMove"
+          @touchend="onTouchEnd"
         >
-          <!-- Poignée -->
-          <div class="flex justify-center pt-4 pb-2">
-            <div class="w-12 h-1.5 bg-slate-300 rounded-full"></div>
-          </div>
-          
-          <!-- En-tête mobile -->
-          <div class="px-6 py-4 border-b border-slate-200/50">
-            <div class="flex items-center justify-between">
-              <span class="text-lg font-bold text-slate-800">Navigation</span>
-              <button 
-                @click="closeMobileMenu"
-                class="p-2 rounded-lg text-slate-500 hover:text-slate-700 hover:bg-slate-100 transition-colors duration-200"
-              >
-                <Icon name="heroicons:x-mark" class="w-5 h-5" />
-              </button>
-            </div>
+          <!-- Poignée dragable -->
+          <div 
+            class="flex justify-center pt-5 pb-3 touch-none cursor-grab active:cursor-grabbing"
+            @touchstart="onDragStart"
+            @mousedown="onDragStart"
+          >
+            <div class="w-16 h-1.5 bg-slate-300 rounded-full"></div>
           </div>
           
           <!-- Contenu du menu -->
           <div class="overflow-y-auto">
-            <div class="px-4 py-2 space-y-2">
+            <div class="px-3 py-4 space-y-3">
               <NuxtLink 
                 v-for="link in links" 
                 :key="link.to"
                 :to="link.to"
-                class="flex items-center w-full px-4 py-4 rounded-2xl text-base font-semibold transition-all duration-200 group/mobile"
+                class="flex items-center w-full px-6 py-5 rounded-2xl text-lg font-semibold transition-all duration-200 group/mobile"
                 :class="{
                   'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg': isActive(link.to),
                   'text-slate-700 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600': !isActive(link.to)
                 }"
                 @click="closeMobileMenu"
               >
-                <div class="flex items-center space-x-4">
-                  <div class="p-2 rounded-xl bg-white/20 backdrop-blur-sm">
-                    <Icon :name="getLinkIcon(link.to)" class="w-5 h-5" />
+                <div class="flex items-center space-x-4 w-full">
+                  <div class="p-3 rounded-xl bg-white/20 backdrop-blur-sm">
+                    <Icon :name="getLinkIcon(link.to)" class="w-6 h-6" />
                   </div>
-                  <span class="flex-1">{{ link.label }}</span>
-                  <Icon 
-                    name="heroicons:arrow-right" 
-                    class="w-4 h-4 transition-transform duration-200 group-hover/mobile:translate-x-1"
-                    :class="isActive(link.to) ? 'text-white' : 'text-slate-400 group-hover/mobile:text-white'"
-                  />
+                  <span class="flex-1 text-xl">{{ link.label }}</span>
                 </div>
               </NuxtLink>
             </div>
             
             <!-- Réseaux sociaux mobile -->
-            <div class="px-4 py-6 border-t border-slate-200/50">
-              <div class="flex justify-center space-x-4 mb-4">
+            <div class="px-4 py-8 border-t border-slate-200/50">
+              <div class="flex justify-center space-x-6 mb-6">
                 <a 
                   v-for="social in socialLinks"
                   :key="social.name"
                   :href="social.url"
                   target="_blank"
-                  class="p-3 rounded-2xl text-slate-600 hover:text-white transition-all duration-200 group/social"
+                  class="p-4 rounded-2xl text-slate-600 hover:text-white transition-all duration-200 group/social"
                   :class="social.hoverClass"
                   :title="social.name"
                 >
-                  <Icon :name="social.icon" class="w-5 h-5 group-hover/social:scale-110 transition-transform duration-200" />
+                  <Icon :name="social.icon" class="w-6 h-6 group-hover/social:scale-110 transition-transform duration-200" />
                 </a>
               </div>
               
               <!-- Email mobile -->
               <a 
                 href="mailto:ton@email.com"
-                class="flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-base font-semibold rounded-2xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all duration-200 active:scale-95"
+                class="flex items-center justify-center w-full px-8 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg font-semibold rounded-2xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all duration-200 active:scale-95"
                 @click="closeMobileMenu"
               >
-                <Icon name="heroicons:envelope" class="w-5 h-5 mr-2" />
-                <span>Envoyer un email</span>
+                <Icon name="heroicons:envelope" class="w-6 h-6 mr-3" />
+                <span class="text-xl">Envoyer un email</span>
               </a>
             </div>
           </div>
@@ -192,6 +182,11 @@ const route = useRoute()
 // État du menu mobile
 const showMobileMenu = ref(false)
 const mobileMenuVisible = ref(false)
+const mobilePanel = ref(null)
+
+// Variables pour le drag
+const isDragging = ref(false)
+const startY = ref(0)
 
 const links = [
   { to: '/', label: 'Accueil' },
@@ -237,6 +232,82 @@ const isActive = (path) => {
   return route.path === path
 }
 
+// Logique de drag
+const onDragStart = (e) => {
+  isDragging.value = true
+  startY.value = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY
+  
+  if (e.type === 'mousedown') {
+    document.addEventListener('mousemove', onMouseMove)
+    document.addEventListener('mouseup', onMouseUp)
+  }
+}
+
+const onTouchMove = (e) => {
+  if (!isDragging.value) return
+  
+  const currentY = e.touches[0].clientY
+  const deltaY = currentY - startY.value
+  
+  // Appliquer le mouvement uniquement vers le bas
+  if (deltaY > 0) {
+    mobilePanel.value.style.transform = `translateY(${deltaY}px)`
+  }
+}
+
+const onTouchEnd = (e) => {
+  if (!isDragging.value) return
+  
+  const currentY = e.changedTouches[0].clientY
+  const deltaY = currentY - startY.value
+  
+  // Si le drag dépasse 100px, fermer le menu
+  if (deltaY > 100) {
+    closeMobileMenu()
+  } else {
+    // Sinon, revenir à la position initiale
+    mobilePanel.value.style.transform = 'translateY(0)'
+  }
+  
+  isDragging.value = false
+}
+
+// Pour les événements de souris
+const onMouseMove = (e) => {
+  if (!isDragging.value) return
+  
+  const currentY = e.clientY
+  const deltaY = currentY - startY.value
+  
+  if (deltaY > 0) {
+    mobilePanel.value.style.transform = `translateY(${deltaY}px)`
+  }
+}
+
+const onMouseUp = (e) => {
+  if (!isDragging.value) return
+  
+  const currentY = e.clientY
+  const deltaY = currentY - startY.value
+  
+  if (deltaY > 100) {
+    closeMobileMenu()
+  } else {
+    mobilePanel.value.style.transform = 'translateY(0)'
+  }
+  
+  isDragging.value = false
+  document.removeEventListener('mousemove', onMouseMove)
+  document.removeEventListener('mouseup', onMouseUp)
+}
+
+// Empêcher le scroll accidentel pendant le drag
+const onTouchStart = (e) => {
+  if (e.target === e.currentTarget) {
+    e.preventDefault()
+  }
+}
+
 // Logique de menu mobile
 const toggleMobileMenu = async () => {
   if (showMobileMenu.value) {
@@ -261,6 +332,10 @@ const closeMobileMenu = () => {
   setTimeout(() => {
     showMobileMenu.value = false
     document.body.style.overflow = ''
+    // Réinitialiser la position
+    if (mobilePanel.value) {
+      mobilePanel.value.style.transform = 'translateY(0)'
+    }
   }, 300)
 }
 
@@ -293,6 +368,8 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
   window.removeEventListener('keydown', handleKeydown)
+  document.removeEventListener('mousemove', onMouseMove)
+  document.removeEventListener('mouseup', onMouseUp)
   document.body.style.overflow = ''
 })
 </script>
@@ -304,5 +381,9 @@ onUnmounted(() => {
 
 .overflow-y-auto::-webkit-scrollbar {
   display: none;
+}
+
+.touch-none {
+  touch-action: none;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
+  <section class="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
     <div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
       
       <!-- En-tête -->
@@ -130,7 +130,7 @@
               </a>
               <NuxtLink 
                 v-else
-                :to="`/projects/${project.slug}`"
+                :to="`/${project.slug}`"
                 class="flex-1 px-3 py-2 bg-white/10 text-white rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover:bg-white/20 transition-colors"
               >
                 <Icon name="heroicons:information-circle" class="w-4 h-4" />
@@ -304,9 +304,9 @@ const projects = [
     technologies: ['NuxtJs', 'Laravel', 'NodeJs', 'MySQL'],
     status: 'in-progress',
     statusLabel: 'En cours',
-    image: '/projects/telecharger.webp',
-    demoUrl: '',
-    githubUrl: ''
+    image: '/projects/mes-flags.png',
+    demoUrl: '#',
+    githubUrl: '#'
   }
 ]
 

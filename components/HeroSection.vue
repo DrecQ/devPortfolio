@@ -55,7 +55,7 @@
           <div class="w-full lg:w-3/5 text-center lg:text-left order-1 lg:order-2">
             <!-- Badge simple -->
             <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full mb-6 backdrop-blur-sm">
-              <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
               <span class="text-white/90 text-sm">Disponible immédiatement</span>
             </div>
 
