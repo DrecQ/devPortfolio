@@ -230,7 +230,6 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-
 // Données de contact
 const contactInfo = [
   {
@@ -379,7 +378,7 @@ const validateForm = () => {
   return Object.keys(errors.value).length === 0
 }
 
-// Gestion de l'envoi du formulaire
+// Gestion de l'envoi du formulaire - VERSION CORRIGÉE
 const handleSubmit = async () => {
   if (!validateForm()) {
     errorMessage.value = 'Veuillez corriger les erreurs dans le formulaire'
@@ -394,26 +393,25 @@ const handleSubmit = async () => {
   showError.value = false
   
   try {
-    // Utilisation de FormSubmit.co pour envoyer l'email
+    // Configuration pour FormSubmit.co
+    const formData = new FormData()
+    formData.append('name', form.value.name.trim())
+    formData.append('email', form.value.email.trim())
+    formData.append('subject', getSubjectLabel(form.value.subject))
+    formData.append('message', form.value.message.trim())
+    formData.append('_subject', `Nouveau message portfolio: ${getSubjectLabel(form.value.subject)}`)
+    formData.append('_replyto', form.value.email.trim())
+    formData.append('_template', 'table')
+    formData.append('_captcha', 'false')
+    
     const response = await fetch('https://formsubmit.co/ajax/quistevaristecredo@gmail.com', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        name: form.value.name.trim(),
-        email: form.value.email.trim(),
-        subject: form.value.subject,
-        message: form.value.message.trim(),
-        _subject: `Nouveau message de ${form.value.name} - ${getSubjectLabel(form.value.subject)}`,
-        _template: 'table',
-        _captcha: 'false',
-        _replyto: form.value.email.trim()
-      })
+      body: formData,
     })
     
-    if (response.ok) {
+    const result = await response.json()
+    
+    if (response.ok && result.success === 'true') {
       // Réinitialiser le formulaire
       form.value = {
         name: '',
@@ -429,16 +427,16 @@ const handleSubmit = async () => {
       }, 5000)
       
     } else {
-      throw new Error('Erreur lors de l\'envoi du formulaire')
+      throw new Error(result.message || 'Erreur lors de l\'envoi')
     }
     
   } catch (error) {
     console.error('Erreur lors de l\'envoi:', error)
-    errorMessage.value = 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.'
+    errorMessage.value = 'Une erreur est survenue lors de l\'envoi. Vous pouvez aussi m\'envoyer un email directement à quistevaristecredo@gmail.com'
     showError.value = true
     setTimeout(() => {
       showError.value = false
-    }, 5000)
+    }, 8000)
   } finally {
     isSubmitting.value = false
   }

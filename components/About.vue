@@ -189,12 +189,14 @@
               <span>Me contacter</span>
             </NuxtLink>
             
-            <a 
+           <a 
               href="/cv.pdf" 
+              download="CV_Evariste_Credo_Quist.pdf"
               target="_blank"
+              @click="handleDownload"
               class="flex-1 px-4 py-3 bg-white/10 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border border-white/20 backdrop-blur-sm"
             >
-              <Icon name="heroicons:arrow-down-tray" class="w-4 h-4" />
+              <Icon name="heroicons:document-arrow-down" class="w-5 h-5" />
               <span>Télécharger CV</span>
             </a>
           </div>
@@ -326,6 +328,19 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown)
 })
+
+
+const handleDownload = (event) => {
+  // Tracking analytics (optionnel)
+  console.log('CV téléchargé')
+  
+  // Forcer le téléchargement sur mobile
+  if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    event.preventDefault()
+    window.open('/cv.pdf', '_blank')
+  }
+}
+
 </script>
 
 <style scoped>

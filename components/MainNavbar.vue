@@ -55,23 +55,31 @@
             </a>
           </div>
 
-          <!-- Email -->
-          <a 
-            href="mailto:ton@email.com"
+          <!-- Email - MODIFIÉ pour aller vers la page contact -->
+          <NuxtLink 
+            to="/contact"
             class="hidden md:flex items-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all duration-200 hover:scale-105 group/email"
           >
             <Icon name="heroicons:envelope" class="w-4 h-4 group-hover/email:animate-bounce" />
             <span>Email</span>
-          </a>
+          </NuxtLink>
           
-          <!-- Bouton menu mobile - Disparaît quand le menu est ouvert -->
+          <!-- Bouton menu mobile - CORRIGÉ (barres moins espacées) -->
           <button 
             v-if="!showMobileMenu"
             @click="toggleMobileMenu"
-            class="md:hidden p-3 rounded-xl text-slate-700 transition-all duration-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:shadow-lg"
+            class="md:hidden p-3 rounded-xl text-slate-700 transition-all duration-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:shadow-lg active:scale-95"
+            aria-label="Ouvrir le menu"
           >
-            <!-- Icône hamburger seulement visible quand le menu est fermé -->
-            <Icon name="heroicons:bars-3" class="w-6 h-6" />
+            <!-- Icône hamburger MOINS ESPACÉE -->
+            <div class="relative w-8 h-6 flex flex-col justify-between">
+              <!-- Barre supérieure -->
+              <div class="w-full h-1 bg-slate-700 rounded-full transform transition-all duration-300 group-hover:bg-white"></div>
+              <!-- Barre médiane -->
+              <div class="w-full h-1 bg-slate-700 rounded-full transform transition-all duration-300 group-hover:bg-white"></div>
+              <!-- Barre inférieure -->
+              <div class="w-full h-1 bg-slate-700 rounded-full transform transition-all duration-300 group-hover:bg-white"></div>
+            </div>
           </button>
         </div>
       </div>
@@ -96,15 +104,18 @@
           :class="mobileMenuVisible ? 'translate-y-0' : 'translate-y-full'"
         >
           <!-- En-tête avec bouton de fermeture -->
-          <div class="flex justify-between items-center p-3 border-b border-slate-200/30">
-            <h2 class="text-base font-semibold text-slate-700">Menu</h2>
+          <div class="flex justify-between items-center p-4 border-b border-slate-200/30 bg-white/80">
+            <h2 class="text-lg font-bold text-slate-800">Navigation</h2>
             <button 
               @click="closeMobileMenu"
-              class="p-2.5 rounded-full bg-slate-100 hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-600 text-slate-600 hover:text-white transition-all duration-200 hover:scale-110 hover:shadow-lg active:scale-95"
+              class="p-3 rounded-full bg-gradient-to-r from-red-500 to-pink-600 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 active:scale-95 group/close"
               aria-label="Fermer le menu"
             >
-              <!-- Croix plus grande -->
-              <Icon name="heroicons:x-mark" class="w-5 h-5" />
+              <!-- Croix -->
+              <div class="relative w-6 h-6">
+                <div class="absolute top-1/2 left-1/2 w-4/5 h-0.5 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2 rotate-45 group-hover/close:scale-110 transition-transform duration-200"></div>
+                <div class="absolute top-1/2 left-1/2 w-4/5 h-0.5 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2 -rotate-45 group-hover/close:scale-110 transition-transform duration-200"></div>
+              </div>
             </button>
           </div>
           
@@ -147,15 +158,15 @@
                 </a>
               </div>
               
-              <!-- Email mobile -->
-              <a 
-                href="mailto:ton@email.com"
+              <!-- Email mobile - MODIFIÉ pour aller vers la page contact -->
+              <NuxtLink 
+                to="/contact"
                 class="flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-base font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all duration-200 active:scale-95"
                 @click="closeMobileMenu"
               >
                 <Icon name="heroicons:envelope" class="w-5 h-5 mr-2" />
                 <span class="text-lg">Envoyer un email</span>
-              </a>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -285,5 +296,10 @@ onUnmounted(() => {
 
 .overflow-y-auto::-webkit-scrollbar {
   display: none;
+}
+
+/* Animation pour les barres du hamburger */
+.group:hover .transform {
+  transform: scale(1.1);
 }
 </style>
