@@ -6,8 +6,11 @@
 
 <script setup>
 // Le script peut rester vide ou tu peux ajouter des interactions
-useSeoMeta({
+useHead({
   title: 'A propos',
+  link: [
+    { rel: 'icon', type: 'image/png', href: '/logo.png' }
+  ]
 })
 
 // Votre code JavaScript ici
