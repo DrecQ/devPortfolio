@@ -1,5 +1,6 @@
 <template>
   <section id="About" class="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
+   
     <!-- Arrière-plan minimal -->
     <div class="absolute inset-0 opacity-10">
       <div class="grid-pattern"></div>
@@ -9,13 +10,9 @@
       
       <!-- En-tête de section -->
       <div class="text-center mb-12 lg:mb-16">
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-4 backdrop-blur-sm border border-white/20">
-          <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-          <span class="text-white/90 text-sm font-medium">À propos de moi</span>
-        </div>
-        
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          Qui suis-je ?
+        <br>
+        <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Qui Suis-je ?
         </h1>
         
         <p class="text-lg text-white/80 max-w-2xl mx-auto">
@@ -53,10 +50,6 @@
                 <!-- Effet de brillance subtile -->
                 <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-400/30 to-purple-500/30 blur-xl opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 
-                <!-- Indicateur de clic -->
-                <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-white/20 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full border border-white/30">
-                  👆 Cliquer pour agrandir
-                </div>
               </div>
               
               <!-- Texte de présentation -->
@@ -183,7 +176,7 @@
           <div class="flex flex-col sm:flex-row gap-3">
             <NuxtLink 
               to="/contact"
-              class="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              class="px-8 py-3.5 bg-blue-600 text-white rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-blue-500 hover:scale-105 transition-all shadow-lg shadow-blue-900/20"
             >
               <Icon name="heroicons:envelope" class="w-4 h-4" />
               <span>Me contacter</span>

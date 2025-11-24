@@ -4,13 +4,9 @@
       
       <!-- En-tête -->
       <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-4 backdrop-blur-sm">
-          <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-          <span class="text-white/90 text-sm">Mes réalisations</span>
-        </div>
         
         <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-          Mes <span class="text-blue-400">Projets</span>
+          Mes Projets
         </h1>
         
         <p class="text-lg text-white/80 max-w-2xl mx-auto">
@@ -280,7 +276,7 @@ const projects = [
     status: 'completed',
     statusLabel: 'Terminé',
     image: '/projects/portfolio.png',
-    demoUrl: 'https://demo.example.com',
+    demoUrl: 'https://drec-portfolio.netlify.app/',
     githubUrl: 'https://github.com/user/project'
   },
   {

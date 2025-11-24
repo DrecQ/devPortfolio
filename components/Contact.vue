@@ -3,13 +3,9 @@
     <div class="relative z-10 min-h-screen">
       <!-- Header -->
       <div class="text-center pt-12 pb-8 px-4">
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-4 backdrop-blur-sm">
-          <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-          <span class="text-white/90 text-sm">Disponible</span>
-        </div>
         
         <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-          Contactez-moi
+          Contactez-Moi
         </h1>
         
         <p class="text-lg text-white/80 max-w-2xl mx-auto">

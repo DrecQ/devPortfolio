@@ -58,7 +58,7 @@
             
             <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full mb-6 backdrop-blur-sm">
               <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span class="text-white/90 text-sm font-mono">Open to work</span>
+              <span class="text-white/90 text-sm font-mono">Disponible</span>
             </div>
 
             <div class="w-32 h-32 rounded-full border-4 border-white/20 mb-6 overflow-hidden shadow-2xl mx-auto lg:hidden relative z-20">
@@ -119,8 +119,8 @@
 
 <script setup>
 // Données statiques
-const titles = ['Développeur Fullstack', 'Architecte Vue.js', 'Creative Developer']
-const techs = ['Vue.js 3', 'Nuxt', 'Tailwind', 'Node.js', 'TypeScript', 'Docker']
+const titles = ['Développeur web', 'Architecte Logicielle', 'Creatif']
+const techs = ['Nuxt.js', 'Node.js', 'PHP', 'Laravel']
 
 // Logique pour l'effet de frappe (Typing effect)
 const currentTitle = ref('')
