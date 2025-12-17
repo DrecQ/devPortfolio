@@ -119,7 +119,7 @@
 
 <script setup>
 // Données statiques
-const titles = ['Développeur web', 'Architecte Logicielle', 'Creatif']
+const titles = ['Développeur web', 'Architecte Logiciel', 'Creatif']
 const techs = ['Nuxt.js', 'Node.js', 'PHP', 'Laravel']
 
 // Logique pour l'effet de frappe (Typing effect)
