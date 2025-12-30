@@ -9,8 +9,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: '#3B8EED',
         blue: {
-          500: '#3b82f6', // Valeur par défaut de blue-500
+          500: '#3B8EED',
+          600: '#3B8EED',
+          900: '#1e3a8a',
         }
       }
     }

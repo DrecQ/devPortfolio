@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 to-slate-900 text-white">
+    <div class="min-h-screen bg-gradient-to-br from-white via-blue-50 to-white text-slate-900">
       <!-- Navigation -->
       <div class="fixed top-6 left-6 z-20">
         <NuxtLink 

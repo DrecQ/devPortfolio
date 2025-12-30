@@ -1,51 +1,78 @@
 <template>
-  <section class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
+  <section class="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+    
+    <!-- Arrière-plan avec effets -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <!-- Cercles lumineux -->
+      <div class="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div class="absolute bottom-1/3 right-1/3 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
+      
+      <!-- Points lumineux flottants -->
+      <div v-for="n in 8" :key="'dot-'+n" 
+           class="absolute w-1 h-1 bg-blue-400/30 rounded-full animate-float-dots"
+           :style="{
+             left: `${Math.random() * 100}%`,
+             top: `${Math.random() * 100}%`,
+             animationDelay: `${n * 0.3}s`,
+             animationDuration: `${6 + Math.random() * 10}s`
+           }">
+      </div>
+    </div>
+
     <div class="relative z-10 min-h-screen">
-      <!-- Header -->
-      <div class="text-center pt-12 pb-8 px-4">
+      <!-- Header amélioré -->
+      <div class="text-center pt-16 pb-12 px-4">
         
-        <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-          Contactez-Moi
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
+          Travaillons <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Ensemble</span>
         </h1>
         
+        <div class="w-32 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-6 rounded-full"></div>
+        
         <p class="text-lg text-white/80 max-w-2xl mx-auto">
-          Discutons de votre prochain projet ensemble
+          Discutons de votre <span class="font-medium text-blue-300">prochain projet</span> et transformons vos idées en réalité
         </p>
       </div>
 
-      <!-- Contenu principal -->
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Contenu principal amélioré -->
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div class="grid lg:grid-cols-3 gap-8 lg:gap-12">
           
-          <!-- Informations de contact -->
-          <div class="lg:col-span-1 space-y-6">
-            <!-- Coordonnées -->
-            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
-              <h3 class="text-xl font-bold text-white mb-6">
-                Mes coordonnées
+          <!-- Informations de contact améliorées -->
+          <div class="lg:col-span-1 space-y-8">
+            <!-- Coordonnées améliorées -->
+            <div class="bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10">
+              <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                <div class="p-2 rounded-xl bg-gradient-to-r from-blue-500/20 to-blue-400/20 border border-blue-500/30 mr-3">
+                  <Icon name="heroicons:envelope-open" class="w-5 h-5 text-blue-400" />
+                </div>
+                <span>Mes coordonnées</span>
               </h3>
               
-              <div class="space-y-4">
+              <div class="space-y-5">
                 <div 
                   v-for="contact in contactInfo" 
                   :key="contact.type"
-                  class="flex items-center gap-3"
+                  class="flex items-center gap-4 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 group/contact border border-white/10 hover:border-blue-500/20"
                 >
-                  <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500/20 to-blue-400/20 flex items-center justify-center flex-shrink-0 border border-blue-500/30 group-hover/contact:scale-110 transition-transform duration-300">
                     <Icon :name="contact.icon" class="w-5 h-5 text-blue-400" />
                   </div>
-                  <div>
-                    <p class="text-white/60 text-sm">{{ contact.label }}</p>
-                    <p class="text-white font-medium">{{ contact.value }}</p>
+                  <div class="flex-1">
+                    <p class="text-white/60 text-xs">{{ contact.label }}</p>
+                    <p class="text-white font-medium text-sm">{{ contact.value }}</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Réseaux sociaux -->
-            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
-              <h3 class="text-xl font-bold text-white mb-4">
-                Mes réseaux
+            <!-- Réseaux sociaux améliorés -->
+            <div class="bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10">
+              <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                <div class="p-2 rounded-xl bg-gradient-to-r from-cyan-500/20 to-cyan-400/20 border border-cyan-500/30 mr-3">
+                  <Icon name="heroicons:share" class="w-5 h-5 text-cyan-400" />
+                </div>
+                <span>Mes réseaux</span>
               </h3>
               
               <div class="grid grid-cols-2 gap-3">
@@ -54,166 +81,235 @@
                   :key="social.name"
                   :href="social.url"
                   target="_blank"
-                  class="flex items-center gap-2 p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                  class="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 group/social border border-white/10 hover:border-blue-500/20"
+                  :class="social.colorClass"
                 >
-                  <Icon :name="social.icon" class="w-4 h-4 text-white" />
-                  <span class="text-white text-sm">{{ social.name }}</span>
+                  <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Icon :name="social.icon" class="w-4 h-4 text-white" />
+                  </div>
+                  <span class="text-white text-sm font-medium">{{ social.name }}</span>
+                  <Icon 
+                    name="heroicons:arrow-up-right" 
+                    class="w-3 h-3 ml-auto text-white/40 group-hover/social:text-blue-400 group-hover/social:translate-x-0.5 group-hover/social:-translate-y-0.5 transition-all duration-300" 
+                  />
                 </a>
               </div>
             </div>
 
-            <!-- Statistiques -->
-            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
-              <div class="grid grid-cols-2 gap-4">
-                <div class="text-center">
-                  <div class="text-2xl font-bold text-white mb-1">{{ stats[0].value }}</div>
-                  <div class="text-white/60 text-sm">Projets</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-2xl font-bold text-green-400 mb-1">{{ stats[1].value }}</div>
-                  <div class="text-white/60 text-sm">Satisfaction</div>
+            <!-- Statistiques améliorées -->
+            <div class="bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10">
+              <div class="grid grid-cols-2 gap-6">
+                <div 
+                  v-for="stat in stats" 
+                  :key="stat.label"
+                  class="text-center p-4 rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all duration-300 group/stat"
+                >
+                  <div class="text-3xl font-bold text-white mb-1 group-hover/stat:text-blue-300 transition-colors duration-300">
+                    {{ stat.value }}
+                  </div>
+                  <div class="text-white/60 text-sm">{{ stat.label }}</div>
+                  <!-- Barre de progression décorative -->
+                  <div class="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
+                    <div 
+                      class="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full transition-all duration-1000"
+                      :style="{ width: stat.percentage + '%' }"
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Formulaire de contact -->
+          <!-- Formulaire de contact amélioré -->
           <div class="lg:col-span-2">
-            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
-              <h3 class="text-xl font-bold text-white mb-6">
-                Envoyez un message
-              </h3>
+            <div class="bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-xl rounded-2xl p-6 lg:p-8 border border-white/10 hover:border-blue-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-blue-500/10">
+              <div class="flex items-center mb-8">
+                <div class="p-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 mr-4">
+                  <Icon name="heroicons:chat-bubble-left-right" class="w-6 h-6 text-blue-400" />
+                </div>
+                <div>
+                  <h3 class="text-2xl font-bold text-white">
+                    Envoyez un message
+                  </h3>
+                  <p class="text-white/70 text-sm mt-1">
+                    Je vous réponds dans les 24 heures
+                  </p>
+                </div>
+              </div>
               
               <form @submit.prevent="handleSubmit" class="space-y-6">
                 <!-- Nom et Email -->
-                <div class="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label for="name" class="block text-white/90 text-sm font-medium mb-2">
-                      Nom complet
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="space-y-2">
+                    <label for="name" class="block text-white/90 text-sm font-medium">
+                      Nom complet *
                     </label>
-                    <input
-                      id="name"
-                      v-model="form.name"
-                      type="text"
-                      name="name"
-                      class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors"
-                      :class="errors.name ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
-                      placeholder="Votre nom"
-                      @blur="validateField('name')"
-                      @input="clearError('name')"
-                    />
-                    <div v-if="errors.name" class="text-red-400 text-xs mt-1">
+                    <div class="relative">
+                      <div class="absolute left-3 top-1/2 -translate-y-1/2">
+                        <Icon name="heroicons:user" class="w-4 h-4 text-white/40" />
+                      </div>
+                      <input
+                        id="name"
+                        v-model="form.name"
+                        type="text"
+                        name="name"
+                        class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-white/10 border transition-all duration-300 placeholder:text-white/40"
+                        :class="errors.name ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
+                        placeholder="Votre nom"
+                        @blur="validateField('name')"
+                        @input="clearError('name')"
+                      />
+                    </div>
+                    <div v-if="errors.name" class="text-red-400 text-xs flex items-center gap-1">
+                      <Icon name="heroicons:exclamation-circle" class="w-3 h-3" />
                       {{ errors.name }}
                     </div>
                   </div>
                   
-                  <div>
-                    <label for="email" class="block text-white/90 text-sm font-medium mb-2">
-                      Email
+                  <div class="space-y-2">
+                    <label for="email" class="block text-white/90 text-sm font-medium">
+                      Email *
                     </label>
-                    <input
-                      id="email"
-                      v-model="form.email"
-                      type="email"
-                      name="email"
-                      class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors"
-                      :class="errors.email ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
-                      placeholder="votre@email.com"
-                      @blur="validateField('email')"
-                      @input="clearError('email')"
-                    />
-                    <div v-if="errors.email" class="text-red-400 text-xs mt-1">
+                    <div class="relative">
+                      <div class="absolute left-3 top-1/2 -translate-y-1/2">
+                        <Icon name="heroicons:envelope" class="w-4 h-4 text-white/40" />
+                      </div>
+                      <input
+                        id="email"
+                        v-model="form.email"
+                        type="email"
+                        name="email"
+                        class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-white/10 border transition-all duration-300 placeholder:text-white/40"
+                        :class="errors.email ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
+                        placeholder="votre@email.com"
+                        @blur="validateField('email')"
+                        @input="clearError('email')"
+                      />
+                    </div>
+                    <div v-if="errors.email" class="text-red-400 text-xs flex items-center gap-1">
+                      <Icon name="heroicons:exclamation-circle" class="w-3 h-3" />
                       {{ errors.email }}
                     </div>
                   </div>
                 </div>
 
-                <!-- Sujet -->
-                <div>
-                  <label for="subject" class="block text-white/90 text-sm font-medium mb-2">
-                    Sujet
+                <!-- Sujet amélioré -->
+                <div class="space-y-2">
+                  <label for="subject" class="block text-white/90 text-sm font-medium">
+                    Sujet *
                   </label>
                   <div class="relative">
+                    <div class="absolute left-3 top-1/2 -translate-y-1/2">
+                      <Icon name="heroicons:tag" class="w-4 h-4 text-white/40" />
+                    </div>
                     <select
                       id="subject"
                       v-model="form.subject"
                       name="subject"
-                      class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors appearance-none pr-12"
+                      class="w-full pl-10 pr-12 py-3.5 rounded-xl bg-white/10 border transition-all duration-300 appearance-none"
                       :class="errors.subject ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
                       @change="clearError('subject')"
                     >
-                      <option value="" disabled selected class="text-slate-600">Sélectionnez un sujet</option>
-                      <option value="projet" class="text-slate-900">Nouveau projet</option>
-                      <option value="collaboration" class="text-slate-900">Collaboration</option>
-                      <option value="question" class="text-slate-900">Question générale</option>
-                      <option value="autre" class="text-slate-900">Autre</option>
+                      <option value="" disabled selected class="bg-slate-800 text-white/70">Sélectionnez un sujet</option>
+                      <option value="projet" class="bg-slate-800 text-white">Nouveau projet</option>
+                      <option value="collaboration" class="bg-slate-800 text-white">Collaboration</option>
+                      <option value="question" class="bg-slate-800 text-white">Question générale</option>
+                      <option value="autre" class="bg-slate-800 text-white">Autre sujet</option>
                     </select>
-                    <!-- Flèche dégradée plus stylisée -->
+                    <!-- Flèche custom -->
                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <div class="w-6 h-6 bg-gradient-to-br from-blue-400 to-purple-500 rounded flex items-center justify-center">
-                        <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
-                        </svg>
+                      <div class="w-6 h-6 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-lg flex items-center justify-center">
+                        <Icon name="heroicons:chevron-down" class="w-3 h-3 text-white" />
                       </div>
                     </div>
                   </div>
-                  <div v-if="errors.subject" class="text-red-400 text-xs mt-1">
+                  <div v-if="errors.subject" class="text-red-400 text-xs flex items-center gap-1">
+                    <Icon name="heroicons:exclamation-circle" class="w-3 h-3" />
                     {{ errors.subject }}
                   </div>
-              </div>
-                <!-- Message -->
-                <div>
-                  <label for="message" class="block text-white/90 text-sm font-medium mb-2">
-                    Message
+                </div>
+
+                <!-- Message amélioré -->
+                <div class="space-y-2">
+                  <label for="message" class="block text-white/90 text-sm font-medium">
+                    Message *
                   </label>
-                  <textarea
-                    id="message"
-                    v-model="form.message"
-                    name="message"
-                    rows="5"
-                    class="w-full px-4 py-3 rounded-lg bg-white/10 border transition-colors resize-none"
-                    :class="errors.message ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
-                    placeholder="Décrivez votre projet ou posez votre question..."
-                    @blur="validateField('message')"
-                    @input="clearError('message')"
-                  ></textarea>
-                  <div v-if="errors.message" class="text-red-400 text-xs mt-1">
-                      {{ errors.message }}
+                  <div class="relative">
+                    <div class="absolute left-3 top-3">
+                      <Icon name="heroicons:chat-bubble-bottom-center-text" class="w-4 h-4 text-white/40" />
                     </div>
+                    <textarea
+                      id="message"
+                      v-model="form.message"
+                      name="message"
+                      rows="6"
+                      class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-white/10 border transition-all duration-300 resize-none placeholder:text-white/40"
+                      :class="errors.message ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
+                      placeholder="Décrivez votre projet ou posez votre question en détail..."
+                      @blur="validateField('message')"
+                      @input="clearError('message')"
+                    ></textarea>
+                    <!-- Compteur de caractères -->
+                    <div class="absolute bottom-3 right-3">
+                      <span class="text-xs text-white/40">{{ form.message.length }}/500</span>
+                    </div>
+                  </div>
+                  <div v-if="errors.message" class="text-red-400 text-xs flex items-center gap-1">
+                    <Icon name="heroicons:exclamation-circle" class="w-3 h-3" />
+                    {{ errors.message }}
+                  </div>
                 </div>
                 
-                <!-- Bouton d'envoi -->
+                <!-- Bouton d'envoi amélioré -->
                 <button
                   type="submit"
                   :disabled="isSubmitting || !isFormValid"
-                  class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  class="w-full px-8 py-3.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-medium flex items-center justify-center gap-3 hover:from-blue-400 hover:to-blue-500 transition-all duration-300 transform hover:scale-105 group/submit relative overflow-hidden shadow-lg shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  <span v-if="!isSubmitting">Envoyer le message</span>
-                  <span v-else>Envoi en cours...</span>
-                  <Icon 
-                    v-if="!isSubmitting"
-                    name="heroicons:paper-airplane" 
-                    class="w-4 h-4" 
-                  />
-                  <div v-else class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  <!-- Effet de brillance -->
+                  <div class="absolute inset-0 -translate-x-full group-hover/submit:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                  
+                  <span class="relative z-10">{{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}</span>
+                  
+                  <div v-if="!isSubmitting" class="relative z-10">
+                    <Icon name="heroicons:paper-airplane" class="w-4 h-4 transform -rotate-45 group-hover/submit:rotate-0 transition-transform duration-300" />
+                  </div>
+                  <div v-else class="relative z-10 w-4 h-4">
+                    <div class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  </div>
                 </button>
                 
-                <!-- Messages de statut -->
-                <div 
-                  v-if="showSuccess"
-                  class="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-400 text-center"
-                >
-                  <Icon name="heroicons:check-circle" class="w-4 h-4 inline mr-2" />
-                  Message envoyé avec succès !
-                </div>
+                <!-- Messages de statut améliorés -->
+                <transition name="fade">
+                  <div 
+                    v-if="showSuccess"
+                    class="p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl text-green-400 flex items-center justify-center gap-2 backdrop-blur-sm animate-fade-in"
+                  >
+                    <Icon name="heroicons:check-circle" class="w-5 h-5 flex-shrink-0" />
+                    <div>
+                      <p class="font-medium">Message envoyé avec succès !</p>
+                      <p class="text-green-400/70 text-sm">Je vous répondrai dans les plus brefs délais.</p>
+                    </div>
+                  </div>
+                </transition>
                 
-                <div 
-                  v-if="showError"
-                  class="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-400 text-center"
-                >
-                  <Icon name="heroicons:exclamation-triangle" class="w-4 h-4 inline mr-2" />
-                  {{ errorMessage }}
-                </div>
+                <transition name="fade">
+                  <div 
+                    v-if="showError"
+                    class="p-4 bg-gradient-to-r from-red-500/20 to-rose-500/20 border border-red-500/30 rounded-xl text-red-400 flex items-center justify-center gap-2 backdrop-blur-sm animate-fade-in"
+                  >
+                    <Icon name="heroicons:exclamation-triangle" class="w-5 h-5 flex-shrink-0" />
+                    <div>
+                      <p class="font-medium">Oups, une erreur est survenue</p>
+                      <p class="text-red-400/70 text-sm">{{ errorMessage }}</p>
+                    </div>
+                  </div>
+                </transition>
+                
+                <!-- Note de confidentialité -->
+                <p class="text-white/50 text-xs text-center pt-4 border-t border-white/10">
+                  Vos informations sont traitées avec confidentialité. Elles ne seront jamais partagées avec des tiers.
+                </p>
               </form>
             </div>
           </div>
@@ -224,64 +320,76 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 // Données de contact
 const contactInfo = [
   {
     type: 'email',
-    label: 'Email',
+    label: 'Email professionnel',
     value: 'quistevaristecredo@gmail.com',
     icon: 'heroicons:envelope'
   },
   {
     type: 'phone',
-    label: 'Téléphone',
-    value: '+229 01 95 30 59 68',
-    icon: 'heroicons:phone'
-  },
-  {
-    type: 'whatsApp',
-    label: 'WhatsApp',
+    label: 'Téléphone / WhatsApp',
     value: '+229 95 30 59 68',
     icon: 'heroicons:phone'
   },
   {
     type: 'location',
     label: 'Localisation',
-    value: 'Cotonou, Benin',
+    value: 'Cotonou, Bénin',
     icon: 'heroicons:map-pin'
+  },
+  {
+    type: 'time',
+    label: 'Disponibilité',
+    value: 'Lun - Ven, 9h - 18h',
+    icon: 'heroicons:clock'
   }
 ]
 
-// Liens sociaux
+// Liens sociaux améliorés
 const socialLinks = [
   { 
     name: 'GitHub', 
     icon: 'simple-icons:github', 
-    url: 'https://github.com/DrecQ' 
+    url: 'https://github.com/DrecQ',
+    colorClass: 'hover:bg-gray-900/30'
   },
   { 
     name: 'LinkedIn', 
     icon: 'simple-icons:linkedin', 
-    url: 'https://www.linkedin.com/in/evariste-credo-quist-44b177386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' 
+    url: 'https://www.linkedin.com/in/evariste-credo-quist-44b177386',
+    colorClass: 'hover:bg-blue-600/30'
   },
   { 
-    name: 'X', 
+    name: 'X (Twitter)', 
     icon: 'simple-icons:x', 
-    url: 'https://x.com/drec_quist?t=sswvVIyxnMCfbKjZU2lalA&s=09' 
+    url: 'https://x.com/drec_quist',
+    colorClass: 'hover:bg-sky-600/30'
   },
   { 
     name: 'Facebook', 
     icon: 'simple-icons:facebook', 
-    url: 'https://www.facebook.com/share/1BwNiNUamG/' 
+    url: 'https://www.facebook.com/share/1BwNiNUamG/',
+    colorClass: 'hover:bg-blue-700/30'
   }
 ]
 
-// Statistiques
+// Statistiques améliorées
 const stats = [
-  { label: 'Projets réalisés', value: '...' },
-  { label: 'Satisfaction client', value: '100%' }
+  { 
+    label: 'Projets réalisés', 
+    value: '20+', 
+    percentage: 85 
+  },
+  { 
+    label: 'Taux de réponse', 
+    value: '100%', 
+    percentage: 100 
+  }
 ]
 
 // État du formulaire
@@ -300,12 +408,15 @@ const errorMessage = ref('')
 
 // Validation du formulaire
 const isFormValid = computed(() => {
-  return Object.keys(errors.value).length === 0 && 
-         form.value.name && 
-         form.value.email && 
-         form.value.subject && 
-         form.value.message &&
-         form.value.message.length >= 10
+  const hasNoErrors = Object.keys(errors.value).length === 0
+  const allFieldsFilled = form.value.name && 
+                         form.value.email && 
+                         form.value.subject && 
+                         form.value.message
+  const messageValid = form.value.message.length >= 10 && 
+                       form.value.message.length <= 500
+  
+  return hasNoErrors && allFieldsFilled && messageValid
 })
 
 // Validation des champs
@@ -319,6 +430,8 @@ const validateField = (field) => {
         newErrors.name = 'Le nom est requis'
       } else if (value.trim().length < 2) {
         newErrors.name = 'Le nom doit contenir au moins 2 caractères'
+      } else if (value.trim().length > 100) {
+        newErrors.name = 'Le nom est trop long'
       } else {
         delete newErrors.name
       }
@@ -347,6 +460,8 @@ const validateField = (field) => {
         newErrors.message = 'Le message est requis'
       } else if (value.trim().length < 10) {
         newErrors.message = 'Le message doit contenir au moins 10 caractères'
+      } else if (value.trim().length > 500) {
+        newErrors.message = 'Le message ne doit pas dépasser 500 caractères'
       } else {
         delete newErrors.message
       }
@@ -374,7 +489,7 @@ const validateForm = () => {
   return Object.keys(errors.value).length === 0
 }
 
-// Gestion de l'envoi du formulaire - VERSION CORRIGÉE
+// Gestion de l'envoi du formulaire
 const handleSubmit = async () => {
   if (!validateForm()) {
     errorMessage.value = 'Veuillez corriger les erreurs dans le formulaire'
@@ -444,20 +559,141 @@ const getSubjectLabel = (subject) => {
     'projet': 'Nouveau projet',
     'collaboration': 'Collaboration',
     'question': 'Question générale',
-    'autre': 'Autre'
+    'autre': 'Autre sujet'
   }
   return subjects[subject] || 'Contact portfolio'
 }
+
+// Gestion des touches clavier
+const handleKeydown = (event) => {
+  if (event.key === 'Escape') {
+    showSuccess.value = false
+    showError.value = false
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
 </script>
 
 <style scoped>
-/* Style pour la flèche du select */
-.bg-select-arrow {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2393a5fb' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+/* Animations CSS personnalisées */
+@keyframes pulse-slow {
+  0%, 100% { 
+    opacity: 0.1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.2; 
+    transform: scale(1.05); 
+  }
 }
 
-/* Pour cacher la flèche par défaut sur certains navigateurs */
-select::-ms-expand {
-  display: none;
+@keyframes float-dots {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.2;
+  }
+  25% { 
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.5;
+  }
+  50% { 
+    transform: translateY(-40px) translateX(-5px);
+    opacity: 0.2;
+  }
+  75% { 
+    transform: translateY(-20px) translateX(-10px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-float-dots {
+  animation: float-dots 8s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Transition pour les messages */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Amélioration des transitions */
+.transition-all {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Support pour reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-slow,
+  .animate-float-dots,
+  .animate-fade-in,
+  .transition-all,
+  .transform {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .hover\:scale-105:hover,
+  .hover\:scale-\[1\.02\]:hover {
+    transform: none !important;
+  }
+}
+
+/* Personnalisation de la scrollbar */
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 3px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+/* Amélioration des inputs */
+input, select, textarea {
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
 }
 </style>
