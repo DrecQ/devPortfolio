@@ -406,8 +406,20 @@ const projects = [
     image: '/projects/meteo-benin.png',
     githubUrl: 'https://github.com/DrecQ/App_Meteo_Frontend'
   },
-  {
+   {
     id: 6,
+    title: 'FastVitrine, creation de vitrine de vente en ligne',
+    slug: 'fast-vitrine',
+    description: 'Application web pour la création de vitrines de vente en ligne pour les vendeurs de produits saisonniers',
+    category: 'web-app',
+    technologies: ['ReactJs', 'TypeScript', 'Gemini-Build', 'Vibe-Coding'],
+    status: 'completed',
+    statusLabel: 'Terminé',
+    image: '/projects/fast-vitrine.png',
+    githubUrl: 'https://github.com/DrecQ/fastVitrine'
+  },
+  {
+    id: 7,
     title: 'Mes FLAGS',
     slug: 'mes-flags',
     description: 'Application web pour permettre aux utilisateurs de découvrir les préférences des autres utilisateurs',

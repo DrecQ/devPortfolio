@@ -21,23 +21,6 @@
       </div>
     </div>
 
-    <!-- Navigation de progression (sticky) -->
-    <div class="sticky top-20 z-20 mb-8 hidden lg:block">
-      <div class="max-w-3xl mx-auto px-4">
-        <div class="flex justify-center space-x-4 bg-white/10 backdrop-blur-sm rounded-full p-2 border border-white/20">
-          <a 
-            v-for="chapter in chapters" 
-            :key="chapter.id"
-            :href="`#${chapter.id}`"
-            class="px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 hover:bg-white/20"
-            :class="activeChapter === chapter.id ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/25' : 'text-white/80'"
-          >
-            {{ chapter.title }}
-          </a>
-        </div>
-      </div>
-    </div>
-
     <!-- Contenu principal -->
     <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       
@@ -328,23 +311,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
-// Navigation par chapitres
-const chapters = [
-  { id: 'introduction', title: 'Introduction' },
-  { id: 'why-informatics', title: 'Pourquoi' },
-  { id: 'inspiration', title: 'Inspiration' },
-  { id: 'philosophy', title: 'Philosophie' },
-  { id: 'ambitions', title: 'Ambitions' },
-  { id: 'skills', title: 'Objectifs' },
-  { id: 'interests', title: 'Intérêts' },
-  { id: 'ai-vision', title: 'IA Vision' },
-  { id: 'conclusion', title: 'Contact' }
-]
-
-const activeChapter = ref('introduction')
-
 // Principes de vie
 const principles = [
   {
@@ -453,25 +419,10 @@ const getCodeSnippet = (index) => {
   return snippets[index % snippets.length]
 }
 
-// Gestion du scroll pour la navigation
-const handleScroll = () => {
-  const sections = chapters.map(chapter => document.getElementById(chapter.id))
-  const scrollPosition = window.scrollY + 100
-
-  for (let i = sections.length - 1; i >= 0; i--) {
-    if (sections[i] && scrollPosition >= sections[i].offsetTop) {
-      activeChapter.value = chapters[i].id
-      break
-    }
-  }
-}
-
 // Animation d'entrée progressive
 const observer = ref(null)
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-  
   observer.value = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -489,7 +440,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
   if (observer.value) {
     observer.value.disconnect()
   }
@@ -571,12 +521,6 @@ onUnmounted(() => {
   .group:hover .hover\:scale-105 {
     transform: none !important;
   }
-}
-
-/* Amélioration de la navigation sticky */
-.sticky {
-  position: sticky;
-  z-index: 20;
 }
 
 /* Amélioration de la lisibilité */
