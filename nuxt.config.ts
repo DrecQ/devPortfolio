@@ -13,7 +13,7 @@ compatibilityDate: "2024-11-01",
   modules: [
     '@nuxtjs/color-mode',
     '@nuxt/image',
-    'nuxt-icon',
+    '@nuxt/icon',
   ],
   colorMode: {
     preference: 'system',
