@@ -77,7 +77,7 @@
             <!-- Badge disponibilité - LUMINEUX -->
             <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-900/40 to-blue-800/30 backdrop-blur-md border border-blue-500/20 rounded-full mb-6 shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 transition-all duration-300 group/badge hover:scale-105">
               <div class="w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse group-hover/badge:animate-ping"></div>
-              <span class="text-blue-200 text-sm font-medium">Disponible pour de nouveaux projets</span>
+              <span class="text-blue-200 text-sm font-medium">{{ t('Disponible pour de nouveaux projets') }}</span>
             </div>
 
             <!-- Photo mobile - LUMINEUSE -->
@@ -111,7 +111,7 @@
 
             <!-- Description avec texte CLAIR -->
             <p class="text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Je conçois des <span class="font-semibold text-blue-300">architectures logicielles robustes</span> et des <span class="font-semibold text-blue-300">interfaces réactives</span>. Passionné par l'optimisation et l'expérience utilisateur.
+              {{ t('Je contribue à la qualité des produits numériques avec des tests fonctionnels et API. Ma formation en développement m’aide à comprendre les applications et à collaborer avec les équipes techniques.') }}
             </p>
 
             <!-- Technologies - EFFET GLASS DARK -->
@@ -125,23 +125,23 @@
             <!-- Boutons CTA - LUMINEUX ET CONTRASTÉ -->
             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <NuxtLink 
-                to="/projects"
+                to="/qa"
                 class="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl font-medium flex items-center justify-center gap-2 hover:from-blue-500 hover:to-blue-400 hover:scale-105 transition-all shadow-xl shadow-blue-900/30 group/cta-primary relative overflow-hidden"
               >
                 <!-- Effet de brillance -->
                 <div class="absolute inset-0 -translate-x-full group-hover/cta-primary:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                <Icon name="heroicons:code-bracket" class="w-5 h-5 relative z-10 group-hover/cta-primary:animate-bounce-slow" />
-                <span class="relative z-10">Mes Projets</span>
+                <Icon name="heroicons:check-badge" class="w-5 h-5 relative z-10 group-hover/cta-primary:animate-bounce-slow" />
+                <span class="relative z-10">{{ t('Profil QA') }}</span>
                 <!-- Effet de bordure lumineuse -->
                 <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-500 rounded-xl blur-sm opacity-0 group-hover/cta-primary:opacity-50 transition-opacity duration-500"></div>
               </NuxtLink>
               
               <NuxtLink 
-                to="/contact"
+                to="/about"
                 class="px-8 py-3.5 bg-slate-800/50 backdrop-blur-sm text-white rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-slate-800/80 border border-slate-700/50 hover:border-blue-500 transition-all hover:scale-105 shadow-lg shadow-slate-900/50 group/cta-secondary relative overflow-hidden"
               >
-                <Icon name="heroicons:paper-airplane" class="w-5 h-5 -rotate-45 text-blue-400 group-hover/cta-secondary:rotate-0 transition-transform duration-300" />
-                <span>Me contacter</span>
+                <Icon name="heroicons:code-bracket" class="w-5 h-5 text-blue-400 transition-transform duration-300 group-hover/cta-secondary:scale-110" />
+                <span>{{ t('Profil dev') }}</span>
                 <!-- Effet de bordure au hover -->
                 <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-500 rounded-xl blur-sm opacity-0 group-hover/cta-secondary:opacity-30 transition-opacity duration-500"></div>
               </NuxtLink>
@@ -161,9 +161,22 @@
 </template>
 
 <script setup>
+const { locale, t } = useSiteLocale()
+
 // Données statiques
-const titles = ['Développeur web', 'Architecte Logiciel', 'Créatif']
-const techs = ['Nuxt.js', 'Node.js', 'PHP', 'Laravel']
+const titles = computed(() => [
+  t('Testeur QA'),
+  t('QA fonctionnel & API'),
+  t('Développeur web')
+])
+const techs = computed(() => [
+  t('Tests fonctionnels'),
+  t('Tests API'),
+  'Cypress',
+  'JavaScript',
+  'PHP',
+  'Nuxt.js'
+])
 
 // Réseaux sociaux avec effets améliorés
 const socialLinks = [
@@ -197,8 +210,8 @@ const loopNum = ref(0)
 const typingSpeed = ref(150)
 
 const handleTyping = () => {
-  const i = loopNum.value % titles.length
-  const fullText = titles[i]
+  const i = loopNum.value % titles.value.length
+  const fullText = titles.value[i]
 
   currentTitle.value = isDeleting.value 
     ? fullText.substring(0, currentTitle.value.length - 1) 
@@ -217,6 +230,12 @@ const handleTyping = () => {
 
   setTimeout(handleTyping, typingSpeed.value)
 }
+
+watch(locale, () => {
+  currentTitle.value = ''
+  isDeleting.value = false
+  loopNum.value = 0
+})
 
 // Particules de code améliorées
 const codeSnippets = [

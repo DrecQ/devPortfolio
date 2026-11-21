@@ -10,7 +10,7 @@
           <NuxtLink 
             to="/" 
             class="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
-            aria-label="Retour à l'accueil"
+            :aria-label="t('Retour à l\'accueil')"
           >
             Portfolio
           </NuxtLink>
@@ -21,7 +21,7 @@
 
         <!-- Navigation rapide -->
         <div class="flex flex-col items-center space-y-3">
-          <h3 class="text-sm font-semibold text-white mb-2">Navigation</h3>
+          <h3 class="text-sm font-semibold text-white mb-2">{{ t('Navigation') }}</h3>
           <div class="flex flex-wrap justify-center gap-4">
             <NuxtLink 
               v-for="link in footerLinks"
@@ -37,7 +37,7 @@
 
         <!-- Réseaux sociaux -->
         <div class="flex flex-col items-center md:items-end space-y-3">
-          <h3 class="text-sm font-semibold text-white mb-2">Réseaux sociaux</h3>
+          <h3 class="text-sm font-semibold text-white mb-2">{{ t('Réseaux sociaux') }}</h3>
           <div class="flex items-center space-x-3">
             <a 
               v-for="social in socialLinks" 
@@ -59,7 +59,7 @@
       <!-- Bas de page simple -->
       <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
         <!-- Contact -->
-        <div class="text-center md:text-left">
+        <div v-if="route.path !== '/qa'" class="text-center md:text-left">
           <a 
             href="mailto:quistevaristecredo@gmail.com" 
             class="text-sm text-slate-400 hover:text-blue-400 transition-colors duration-300 flex items-center justify-center md:justify-start gap-2"
@@ -73,10 +73,10 @@
         <button
           @click="scrollToTop"
           class="px-4 py-2 text-sm text-slate-400 hover:text-white transition-colors duration-300 flex items-center gap-2 border border-slate-700 rounded-lg hover:border-blue-500"
-          aria-label="Retour en haut de la page"
+          :aria-label="t('Retour en haut de la page')"
         >
           <Icon name="heroicons:arrow-up" class="w-4 h-4" />
-          <span>Retour en haut</span>
+          <span>{{ t('Retour en haut') }}</span>
         </button>
       </div>
 
@@ -85,16 +85,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
+const { t } = useSiteLocale()
+const route = useRoute()
 const currentYear = ref(new Date().getFullYear())
 
-const footerLinks = [
-  { to: '/', label: 'Accueil' },
-  { to: '/about', label: 'À propos' },
-  { to: '/projects', label: 'Projets' },
-  { to: '/contact', label: 'Contact' }
-]
+const footerLinks = computed(() => [
+  { to: '/', label: t('Accueil') },
+  { to: '/about', label: t('À propos') },
+  { to: '/projects', label: t('Projets') },
+  { to: '/contact', label: t('Contact') }
+])
 
 const socialLinks = [
   { 

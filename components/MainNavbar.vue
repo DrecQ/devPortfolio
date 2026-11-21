@@ -18,7 +18,7 @@
         </NuxtLink>
         
         <!-- Navigation au centre - SANS ICÔNES -->
-        <nav class="hidden md:flex items-center space-x-1 bg-white/60 backdrop-blur-md rounded-2xl p-1.5 shadow-sm border border-slate-200/50">
+        <nav class="hidden lg:flex items-center space-x-1 bg-white/60 backdrop-blur-md rounded-2xl p-1.5 shadow-sm border border-slate-200/50">
           <NuxtLink 
             v-for="link in links" 
             :key="link.to"
@@ -51,7 +51,7 @@
         <!-- CTA à droite -->
         <div class="flex items-center space-x-3">
           <!-- Réseaux sociaux -->
-          <div class="hidden md:flex items-center space-x-1 bg-white/60 backdrop-blur-sm rounded-2xl p-1.5 border border-slate-200/30">
+          <div class="hidden lg:flex items-center space-x-1 bg-white/60 backdrop-blur-sm rounded-2xl p-1.5 border border-slate-200/30">
             <a 
               v-for="social in socialLinks"
               :key="social.name"
@@ -60,7 +60,7 @@
               class="p-2.5 rounded-xl text-slate-600 hover:text-white transition-all duration-300 group/social relative overflow-hidden"
               :class="social.hoverClass"
               :title="social.name"
-              aria-label="Lien vers mon profil"
+              :aria-label="t('Lien vers mon profil')"
             >
               <!-- Effet de background -->
               <div class="absolute inset-0 rounded-xl opacity-0 group-hover/social:opacity-100 transition-opacity duration-300" :class="social.bgClass"></div>
@@ -71,25 +71,27 @@
           <!-- Email -->
           <NuxtLink 
             to="/contact"
-            class="hidden md:flex items-center space-x-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all duration-300 hover:scale-105 group/email relative overflow-hidden"
+            class="hidden lg:flex items-center space-x-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-sm font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 transition-all duration-300 hover:scale-105 group/email relative overflow-hidden"
             prefetch
           >
             <!-- Effet de brillance au hover -->
             <div class="absolute inset-0 -translate-x-full group-hover/email:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             
             <Icon name="heroicons:envelope" class="w-4 h-4 relative z-10 group-hover/email:animate-bounce-slow" />
-            <span class="relative z-10">Contact</span>
+            <span class="relative z-10">{{ t('Contact') }}</span>
             
             <!-- Pulse animation subtile -->
             <div class="absolute inset-0 rounded-xl border border-blue-400/50 animate-pulse-slow opacity-0 group-hover/email:opacity-100"></div>
           </NuxtLink>
+
+          <LanguageSwitcher class="hidden lg:inline-flex" />
           
           <!-- Bouton menu mobile -->
           <button 
             v-if="!showMobileMenu"
             @click="toggleMobileMenu"
-            class="md:hidden p-3 rounded-xl text-slate-700 transition-all duration-300 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-500 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            aria-label="Menu navigation mobile"
+            class="lg:hidden p-3 rounded-xl text-slate-700 transition-all duration-300 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-500 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            :aria-label="t('Menu navigation mobile')"
             :aria-expanded="showMobileMenu"
             aria-controls="mobile-menu"
           >
@@ -111,7 +113,7 @@
     <Teleport to="body">
       <div 
         v-if="showMobileMenu" 
-        class="fixed inset-0 z-50 md:hidden"
+        class="fixed inset-0 z-50 lg:hidden"
         id="mobile-menu"
       >
         <!-- Backdrop avec effet de flou gradient -->
@@ -132,12 +134,12 @@
               <div class="p-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 shadow-lg">
                 <Icon name="heroicons:bars-3" class="w-6 h-6 text-white" />
               </div>
-              <h2 class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Navigation</h2>
+              <h2 class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">{{ t('Navigation') }}</h2>
             </div>
             <button 
               @click="closeMobileMenu"
               class="p-3 rounded-full bg-gradient-to-r from-red-500 to-pink-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group/close focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-              aria-label="Fermer le menu"
+              :aria-label="t('Fermer le menu')"
             >
               <!-- Croix avec animation -->
               <div class="relative w-6 h-6">
@@ -182,6 +184,10 @@
               </NuxtLink>
             </div>
             
+            <div class="flex justify-center py-3">
+              <LanguageSwitcher />
+            </div>
+
             <!-- Séparateur -->
             <div class="px-6 py-2">
               <div class="h-px bg-gradient-to-r from-transparent via-slate-300/50 to-transparent"></div>
@@ -198,7 +204,7 @@
                   class="p-3 rounded-xl text-slate-600 hover:text-white transition-all duration-300 group/social relative overflow-hidden"
                   :class="social.hoverClass"
                   :title="social.name"
-                  aria-label="Lien vers mon profil"
+                  :aria-label="t('Lien vers mon profil')"
                 >
                   <!-- Effet de background -->
                   <div class="absolute inset-0 rounded-xl opacity-0 group-hover/social:opacity-100 transition-opacity duration-300" :class="social.bgClass"></div>
@@ -217,7 +223,7 @@
                 <div class="absolute inset-0 -translate-x-full group-hover/cta:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                 
                 <Icon name="heroicons:envelope" class="w-5 h-5 mr-3 relative z-10 group-hover/cta:animate-bounce-slow" />
-                <span class="text-lg font-medium relative z-10">Me Contacter</span>
+                <span class="text-lg font-medium relative z-10">{{ t('Me Contacter') }}</span>
               </NuxtLink>
             </div>
           </div>
@@ -228,21 +234,22 @@
 </template>
 
 <script setup>
-import { ref, nextTick, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed, nextTick, watch, onMounted, onUnmounted } from 'vue'
 
 const route = useRoute()
+const { t } = useSiteLocale()
 
 // État du menu mobile
 const showMobileMenu = ref(false)
 const mobileMenuVisible = ref(false)
 const mobilePanel = ref(null)
 
-const links = [
-  { to: '/', label: 'Accueil' },
-  { to: '/about', label: 'À Propos' },
-  { to: '/projects', label: 'Projets' },
-  { to: '/contact', label: 'Contact' }
-]
+const links = computed(() => [
+  { to: '/', label: t('Accueil') },
+  { to: '/about', label: t('À Propos') },
+  { to: '/projects', label: t('Projets') },
+  { to: '/contact', label: t('Contact') }
+])
 
 // Réseaux sociaux
 const socialLinks = [
@@ -335,7 +342,7 @@ watch(() => route.path, () => {
 
 // Fermer le menu mobile au redimensionnement
 const handleResize = debounce(() => {
-  if (window.innerWidth >= 768 && showMobileMenu.value) {
+  if (window.innerWidth >= 1024 && showMobileMenu.value) {
     closeMobileMenu()
   }
 }, 150)

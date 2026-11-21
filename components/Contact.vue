@@ -24,13 +24,13 @@
       <div class="text-center pt-16 pb-12 px-4">
         
         <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-          Travaillons <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Ensemble</span>
+          {{ t('Travaillons') }} <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{{ t('Ensemble') }}</span>
         </h1>
         
         <div class="w-32 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-6 rounded-full"></div>
         
         <p class="text-lg text-white/80 max-w-2xl mx-auto">
-          Discutons de votre <span class="font-medium text-blue-300">prochain projet</span> et transformons vos idées en réalité
+          {{ t('Discutons de votre') }} <span class="font-medium text-blue-300">{{ t('prochain projet') }}</span> {{ t('et transformons vos idées en réalité') }}
         </p>
       </div>
 
@@ -46,7 +46,7 @@
                 <div class="p-2 rounded-xl bg-gradient-to-r from-blue-500/20 to-blue-400/20 border border-blue-500/30 mr-3">
                   <Icon name="heroicons:envelope-open" class="w-5 h-5 text-blue-400" />
                 </div>
-                <span>Mes coordonnées</span>
+                <span>{{ t('Mes coordonnées') }}</span>
               </h3>
               
               <div class="space-y-5">
@@ -59,8 +59,8 @@
                     <Icon :name="contact.icon" class="w-5 h-5 text-blue-400" />
                   </div>
                   <div class="flex-1">
-                    <p class="text-white/60 text-xs">{{ contact.label }}</p>
-                    <p class="text-white font-medium text-sm">{{ contact.value }}</p>
+                    <p class="text-white/60 text-xs">{{ t(contact.label) }}</p>
+                    <p class="text-white font-medium text-sm">{{ t(contact.value) }}</p>
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@
                 <div class="p-2 rounded-xl bg-gradient-to-r from-cyan-500/20 to-cyan-400/20 border border-cyan-500/30 mr-3">
                   <Icon name="heroicons:share" class="w-5 h-5 text-cyan-400" />
                 </div>
-                <span>Mes réseaux</span>
+                <span>{{ t('Mes réseaux') }}</span>
               </h3>
               
               <div class="grid grid-cols-2 gap-3">
@@ -107,7 +107,7 @@
                   <div class="text-3xl font-bold text-white mb-1 group-hover/stat:text-blue-300 transition-colors duration-300">
                     {{ stat.value }}
                   </div>
-                  <div class="text-white/60 text-sm">{{ stat.label }}</div>
+                  <div class="text-white/60 text-sm">{{ t(stat.label) }}</div>
                   <!-- Barre de progression décorative -->
                   <div class="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
                     <div 
@@ -129,10 +129,10 @@
                 </div>
                 <div>
                   <h3 class="text-2xl font-bold text-white">
-                    Envoyez un message
+                    {{ t('Envoyez un message') }}
                   </h3>
                   <p class="text-white/70 text-sm mt-1">
-                    Je vous réponds dans les 24 heures
+                    {{ t('Je vous réponds dans les 24 heures') }}
                   </p>
                 </div>
               </div>
@@ -142,7 +142,7 @@
                 <div class="grid md:grid-cols-2 gap-6">
                   <div class="space-y-2">
                     <label for="name" class="block text-white/90 text-sm font-medium">
-                      Nom complet *
+                      {{ t('Nom complet *') }}
                     </label>
                     <div class="relative">
                       <div class="absolute left-3 top-1/2 -translate-y-1/2">
@@ -155,20 +155,20 @@
                         name="name"
                         class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-white/10 border transition-all duration-300 placeholder:text-white/40"
                         :class="errors.name ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
-                        placeholder="Votre nom"
+                        :placeholder="t('Votre nom')"
                         @blur="validateField('name')"
                         @input="clearError('name')"
                       />
                     </div>
                     <div v-if="errors.name" class="text-red-400 text-xs flex items-center gap-1">
                       <Icon name="heroicons:exclamation-circle" class="w-3 h-3" />
-                      {{ errors.name }}
+                      {{ t(errors.name) }}
                     </div>
                   </div>
                   
                   <div class="space-y-2">
                     <label for="email" class="block text-white/90 text-sm font-medium">
-                      Email *
+                      {{ t('Email *') }}
                     </label>
                     <div class="relative">
                       <div class="absolute left-3 top-1/2 -translate-y-1/2">
@@ -188,7 +188,7 @@
                     </div>
                     <div v-if="errors.email" class="text-red-400 text-xs flex items-center gap-1">
                       <Icon name="heroicons:exclamation-circle" class="w-3 h-3" />
-                      {{ errors.email }}
+                      {{ t(errors.email) }}
                     </div>
                   </div>
                 </div>
@@ -196,7 +196,7 @@
                 <!-- Sujet amélioré -->
                 <div class="space-y-2">
                   <label for="subject" class="block text-white/90 text-sm font-medium">
-                    Sujet *
+                    {{ t('Sujet *') }}
                   </label>
                   <div class="relative">
                     <div class="absolute left-3 top-1/2 -translate-y-1/2">
@@ -210,11 +210,11 @@
                       :class="errors.subject ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
                       @change="clearError('subject')"
                     >
-                      <option value="" disabled selected class="bg-slate-800 text-white/70">Sélectionnez un sujet</option>
-                      <option value="projet" class="bg-slate-800 text-white">Nouveau projet</option>
-                      <option value="collaboration" class="bg-slate-800 text-white">Collaboration</option>
-                      <option value="question" class="bg-slate-800 text-white">Question générale</option>
-                      <option value="autre" class="bg-slate-800 text-white">Autre sujet</option>
+                      <option value="" disabled selected class="bg-slate-800 text-white/70">{{ t('Sélectionnez un sujet') }}</option>
+                      <option value="projet" class="bg-slate-800 text-white">{{ t('Nouveau projet') }}</option>
+                      <option value="collaboration" class="bg-slate-800 text-white">{{ t('Collaboration') }}</option>
+                      <option value="question" class="bg-slate-800 text-white">{{ t('Question générale') }}</option>
+                      <option value="autre" class="bg-slate-800 text-white">{{ t('Autre sujet') }}</option>
                     </select>
                     <!-- Flèche custom -->
                     <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
@@ -225,14 +225,14 @@
                   </div>
                   <div v-if="errors.subject" class="text-red-400 text-xs flex items-center gap-1">
                     <Icon name="heroicons:exclamation-circle" class="w-3 h-3" />
-                    {{ errors.subject }}
+                    {{ t(errors.subject) }}
                   </div>
                 </div>
 
                 <!-- Message amélioré -->
                 <div class="space-y-2">
                   <label for="message" class="block text-white/90 text-sm font-medium">
-                    Message *
+                    {{ t('Message *') }}
                   </label>
                   <div class="relative">
                     <div class="absolute left-3 top-3">
@@ -245,7 +245,7 @@
                       rows="6"
                       class="w-full pl-10 pr-4 py-3.5 rounded-xl bg-white/10 border transition-all duration-300 resize-none placeholder:text-white/40"
                       :class="errors.message ? 'border-red-400/50 focus:border-red-400 focus:ring-2 focus:ring-red-400/30' : 'border-white/20 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/30'"
-                      placeholder="Décrivez votre projet ou posez votre question en détail..."
+                      :placeholder="t('Décrivez votre projet ou posez votre question en détail...')"
                       @blur="validateField('message')"
                       @input="clearError('message')"
                     ></textarea>
@@ -256,7 +256,7 @@
                   </div>
                   <div v-if="errors.message" class="text-red-400 text-xs flex items-center gap-1">
                     <Icon name="heroicons:exclamation-circle" class="w-3 h-3" />
-                    {{ errors.message }}
+                    {{ t(errors.message) }}
                   </div>
                 </div>
                 
@@ -269,7 +269,7 @@
                   <!-- Effet de brillance -->
                   <div class="absolute inset-0 -translate-x-full group-hover/submit:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                   
-                  <span class="relative z-10">{{ isSubmitting ? 'Envoi en cours...' : 'Envoyer le message' }}</span>
+                  <span class="relative z-10">{{ t(isSubmitting ? 'Envoi en cours...' : 'Envoyer le message') }}</span>
                   
                   <div v-if="!isSubmitting" class="relative z-10">
                     <Icon name="heroicons:paper-airplane" class="w-4 h-4 transform -rotate-45 group-hover/submit:rotate-0 transition-transform duration-300" />
@@ -287,8 +287,8 @@
                   >
                     <Icon name="heroicons:check-circle" class="w-5 h-5 flex-shrink-0" />
                     <div>
-                      <p class="font-medium">Message envoyé avec succès !</p>
-                      <p class="text-green-400/70 text-sm">Je vous répondrai dans les plus brefs délais.</p>
+                      <p class="font-medium">{{ t('Message envoyé avec succès !') }}</p>
+                      <p class="text-green-400/70 text-sm">{{ t('Je vous répondrai dans les plus brefs délais.') }}</p>
                     </div>
                   </div>
                 </transition>
@@ -300,15 +300,15 @@
                   >
                     <Icon name="heroicons:exclamation-triangle" class="w-5 h-5 flex-shrink-0" />
                     <div>
-                      <p class="font-medium">Oups, une erreur est survenue</p>
-                      <p class="text-red-400/70 text-sm">{{ errorMessage }}</p>
+                      <p class="font-medium">{{ t('Oups, une erreur est survenue') }}</p>
+                      <p class="text-red-400/70 text-sm">{{ t(errorMessage) }}</p>
                     </div>
                   </div>
                 </transition>
                 
                 <!-- Note de confidentialité -->
                 <p class="text-white/50 text-xs text-center pt-4 border-t border-white/10">
-                  Vos informations sont traitées avec confidentialité. Elles ne seront jamais partagées avec des tiers.
+                  {{ t('Vos informations sont traitées avec confidentialité. Elles ne seront jamais partagées avec des tiers.') }}
                 </p>
               </form>
             </div>
@@ -321,6 +321,8 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+
+const { t } = useSiteLocale()
 
 // Données de contact
 const contactInfo = [
@@ -510,7 +512,7 @@ const handleSubmit = async () => {
     formData.append('email', form.value.email.trim())
     formData.append('subject', getSubjectLabel(form.value.subject))
     formData.append('message', form.value.message.trim())
-    formData.append('_subject', `Nouveau message portfolio: ${getSubjectLabel(form.value.subject)}`)
+    formData.append('_subject', `${t('Nouveau message portfolio:')} ${getSubjectLabel(form.value.subject)}`)
     formData.append('_replyto', form.value.email.trim())
     formData.append('_template', 'table')
     formData.append('_captcha', 'false')
@@ -561,7 +563,7 @@ const getSubjectLabel = (subject) => {
     'question': 'Question générale',
     'autre': 'Autre sujet'
   }
-  return subjects[subject] || 'Contact portfolio'
+  return t(subjects[subject] || 'Contact portfolio')
 }
 
 // Gestion des touches clavier

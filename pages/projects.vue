@@ -5,13 +5,15 @@
 </template>
 
 <script setup>
+const { t } = useSiteLocale()
+
 // Le script peut rester vide ou tu peux ajouter des interactions
-useHead({
-  title: 'Mes projets',
+useHead(() => ({
+  title: t('Mes projets'),
   link: [
     { rel: 'icon', type: 'image/png', href: '/logo.png' }
   ]
-})
+}))
 // Votre code JavaScript ici
 </script>
 

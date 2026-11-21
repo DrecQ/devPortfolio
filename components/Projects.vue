@@ -24,11 +24,11 @@
       <div class="text-center mb-16">
         
         <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-          Mes <span class="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">Projets</span>
+          {{ t('Mes') }} <span class="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">{{ t('Projets') }}</span>
         </h1>
         
         <p class="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-          Découvrez une sélection de mes applications web et solutions <span class="text-blue-300 font-medium">full-stack</span> développées avec passion
+          {{ t('Découvrez une sélection de mes applications web et solutions full-stack développées avec passion') }}
         </p>
       </div>
 
@@ -45,7 +45,7 @@
               : 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/10 hover:border-white/20 hover:scale-105'
           ]"
         >
-          <span class="relative z-10">{{ filter.label }}</span>
+          <span class="relative z-10">{{ t(filter.label) }}</span>
           <!-- Effet de hover pour filtres inactifs -->
           <div 
             v-if="activeFilter !== filter.value"
@@ -76,7 +76,7 @@
             <NuxtImg 
               v-if="project.image"
               :src="project.image" 
-              :alt="`Aperçu du projet ${project.title}`"
+              :alt="`${t('Aperçu du projet')} ${t(project.title)}`"
               class="w-full h-full object-cover transition-all duration-700 group-hover/image:scale-110 group-hover/image:brightness-110"
               loading="lazy"
               format="webp"
@@ -106,14 +106,14 @@
                   'bg-blue-500/20 text-blue-300 border-blue-500/40 shadow-blue-500/10'
                 ]"
               >
-                {{ project.statusLabel }}
+                {{ t(project.statusLabel) }}
               </span>
             </div>
 
             <!-- Indicateur de clic -->
             <div class="absolute bottom-3 left-3 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm opacity-0 group-hover/image:opacity-100 transition-all duration-300 flex items-center gap-1.5">
               <Icon name="heroicons:arrow-up-right" class="w-3 h-3" />
-              <span>Voir en grand</span>
+              <span>{{ t('Voir en grand') }}</span>
             </div>
           </div>
 
@@ -122,7 +122,7 @@
             <div class="flex items-start justify-between mb-4">
               <div class="flex-1">
                 <h3 class="text-xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300 mb-1">
-                  {{ project.title }}
+                  {{ t(project.title) }}
                 </h3>
                 <!-- Catégorie -->
                 <div class="inline-flex items-center gap-1.5 text-xs text-white/60">
@@ -137,7 +137,7 @@
             </div>
 
             <p class="text-white/70 text-sm mb-5 leading-relaxed line-clamp-2">
-              {{ project.description }}
+              {{ t(project.description) }}
             </p>
 
             <!-- Technologies améliorées -->
@@ -169,7 +169,7 @@
                 <!-- Effet de brillance -->
                 <div class="absolute inset-0 -translate-x-full group-hover/demo:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                 <Icon name="heroicons:play-circle" class="w-4 h-4 relative z-10" />
-                <span class="relative z-10">Démo</span>
+                <span class="relative z-10">{{ t('Démo') }}</span>
               </a>
               <a 
                 v-if="project.githubUrl && project.githubUrl !== '#'"
@@ -178,7 +178,7 @@
                 class="flex-1 px-4 py-2.5 bg-white/10 backdrop-blur-sm text-white rounded-xl text-sm font-medium flex items-center justify-center gap-2 hover:bg-white/20 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 group/github"
               >
                 <Icon name="simple-icons:github" class="w-4 h-4" />
-                <span>Code</span>
+                <span>{{ t('Code') }}</span>
               </a>
               <NuxtLink 
                 v-else
@@ -186,7 +186,7 @@
                 class="flex-1 px-4 py-2.5 bg-white/10 backdrop-blur-sm text-white rounded-xl text-sm font-medium flex items-center justify-center gap-2 hover:bg-white/20 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 group/details"
               >
                 <Icon name="heroicons:information-circle" class="w-4 h-4" />
-                <span>Détails</span>
+                <span>{{ t('Détails') }}</span>
               </NuxtLink>
             </div>
           </div>
@@ -203,7 +203,7 @@
           <div class="text-3xl font-bold text-white mb-2 group-hover/stat:text-blue-300 transition-colors duration-300">
             {{ stat.value }}
           </div>
-          <div class="text-sm text-white/70">{{ stat.label }}</div>
+          <div class="text-sm text-white/70">{{ t(stat.label) }}</div>
           <!-- Barre de progression décorative -->
           <div class="mt-4 h-1 bg-white/10 rounded-full overflow-hidden">
             <div 
@@ -222,9 +222,9 @@
         
         <div class="relative z-10 text-center">
           <h2 class="text-2xl font-bold text-white mb-3">
-            Un <span class="text-blue-300">projet</span> en tête ?
+            {{ t('Un') }} <span class="text-blue-300">{{ t('projet') }}</span> {{ t('en tête ?') }}
           </h2>
-          <p class="text-white/80 mb-6 max-w-lg mx-auto">Discutons de votre prochain projet ensemble et transformons vos idées en réalité</p>
+          <p class="text-white/80 mb-6 max-w-lg mx-auto">{{ t('Discutons de votre prochain projet ensemble et transformons vos idées en réalité') }}</p>
           <NuxtLink 
             to="/contact"
             class="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-medium hover:from-blue-400 hover:to-blue-500 transition-all duration-300 hover:scale-105 group/contact relative overflow-hidden shadow-lg shadow-blue-500/25"
@@ -232,7 +232,7 @@
             <!-- Effet de brillance -->
             <div class="absolute inset-0 -translate-x-full group-hover/contact:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             <Icon name="heroicons:chat-bubble-left-right" class="w-5 h-5 relative z-10" />
-            <span class="relative z-10">Me contacter</span>
+            <span class="relative z-10">{{ t('Me contacter') }}</span>
           </NuxtLink>
         </div>
       </div>
@@ -266,7 +266,7 @@
             <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-slate-900 to-slate-800">
               <NuxtImg 
                 :src="selectedProject.image" 
-                :alt="`Aperçu du projet ${selectedProject.title}`"
+                :alt="`${t('Aperçu du projet')} ${t(selectedProject.title)}`"
                 width="800" 
                 height="600" 
                 class="w-full h-auto max-h-[70vh] object-contain"
@@ -285,8 +285,8 @@
             <!-- Informations du projet améliorées -->
             <div class="text-center mt-6 space-y-4">
               <div>
-                <h3 class="text-2xl font-bold text-white mb-1">{{ selectedProject.title }}</h3>
-                <p class="text-white/80">{{ selectedProject.description }}</p>
+                <h3 class="text-2xl font-bold text-white mb-1">{{ t(selectedProject.title) }}</h3>
+                <p class="text-white/80">{{ t(selectedProject.description) }}</p>
               </div>
               
               <!-- Technologies dans le modal -->
@@ -301,7 +301,7 @@
               </div>
               
               <p class="text-white/60 text-sm pt-4 border-t border-white/10">
-                Cliquez en dehors de l'image ou appuyez sur <kbd class="px-2 py-1 bg-white/10 rounded text-xs">Échap</kbd> pour fermer
+                {{ t('Cliquez en dehors de l’image ou appuyez sur') }} <kbd class="px-2 py-1 bg-white/10 rounded text-xs">Esc</kbd> {{ t('pour fermer') }}
               </p>
             </div>
           </div>
@@ -312,12 +312,14 @@
 </template>
 
 <script setup>
+const { t } = useSiteLocale()
+
 // Filtres
 const filters = [
   { label: 'Tous', value: 'all' },
-  { label: 'Web App', value: 'web-app' },
-  { label: 'Frontend', value: 'frontend' },
-  { label: 'Backend', value: 'backend' }
+  { label: 'Application Web', value: 'web-app' },
+  { label: 'Interface', value: 'frontend' },
+  { label: 'API & Backend', value: 'backend' }
 ]
 
 const activeFilter = ref('all')
@@ -339,7 +341,7 @@ const getCategoryLabel = (category) => {
     'frontend': 'Interface',
     'backend': 'API & Backend'
   }
-  return labels[category] || 'Projet'
+  return t(labels[category] || 'Projet')
 }
 
 // Projets avec images
@@ -430,6 +432,19 @@ const projects = [
     image: '/projects/mes-flags.png',
     demoUrl: '#',
     githubUrl: '#'
+  },
+  {
+    id: 8,
+    title: 'Garçon Noir',
+    slug: 'garcon-noir',
+    description: 'Site officiel de la marque streetwear Garçon Noir, avec présentation de ses collections et de son histoire.',
+    category: 'web-app',
+    technologies: ['Nuxt 4', 'Vue.js', 'Tailwind CSS'],
+    status: 'completed',
+    statusLabel: 'Terminé',
+    image: '/projects/garcon-noir.webp',
+    demoUrl: 'https://garcon-noir-app.vercel.app/',
+    githubUrl: 'https://github.com/DrecQ/garcon-noir-app'
   }
 ]
 

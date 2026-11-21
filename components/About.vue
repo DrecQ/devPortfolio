@@ -25,13 +25,13 @@
       <div class="text-center mb-12 lg:mb-16">
         
         <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-          Qui <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Suis-je</span> ?
+          {{ t('Qui') }} <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{{ t('Suis-je') }}</span>{{ locale === 'fr' ? ' ?' : '?' }}
         </h1>
         
         <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-6 rounded-full"></div>
         
         <p class="text-lg text-white/80 max-w-2xl mx-auto">
-          Développeur passionné créant des solutions web <span class="text-blue-300 font-medium">modernes et performantes</span>
+          {{ t('Testeur QA formé au développement, je contribue à la qualité des applications grâce aux tests fonctionnels et API.') }}
         </p>
       </div>
 
@@ -58,7 +58,7 @@
                   
                   <NuxtImg 
                     src="/tof_pro.jpg" 
-                    alt="Photo d'Evariste Credo" 
+                    :alt="t('Photo d’Evariste Credo')"
                     width="500" 
                     height="500" 
                     class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
@@ -71,7 +71,7 @@
                   <!-- Indicateur de clic -->
                   <div class="absolute bottom-3 left-3 bg-black/60 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1.5">
                     <Icon name="heroicons:eye" class="w-3 h-3" />
-                    <span>Voir en grand</span>
+                    <span>{{ t('Voir en grand') }}</span>
                   </div>
                 </div>
               </div>
@@ -82,12 +82,11 @@
                   Evariste Credo
                 </h2>
                 <p class="text-lg bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-medium mb-3">
-                  Développeur Full Stack & Architecte
+                  {{ t('Testeur QA & développeur web') }}
                 </p>
                 <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-4 rounded-full"></div>
                 <p class="text-white/70 text-base leading-relaxed">
-                  Je transforme des <span class="font-semibold text-blue-300">concepts innovants</span> en solutions digitales performantes, 
-                  alliant élégance et fonctionnalité.
+                  {{ t('Je prépare et réalise des tests fonctionnels et API. Ma formation en développement m’aide à comprendre les applications et à échanger avec les équipes techniques.') }}
                 </p>
               </div>
 
@@ -99,7 +98,7 @@
                 <!-- Effet de brillance -->
                 <div class="absolute inset-0 -translate-x-full group-hover/cta:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                 <Icon name="heroicons:sparkles" class="w-5 h-5 relative z-10" />
-                <span class="relative z-10 text-lg">Me découvrir</span>
+                <span class="relative z-10 text-lg">{{ t('Me découvrir') }}</span>
                 <Icon name="heroicons:arrow-right" class="w-4 h-4 relative z-10 transform group-hover/cta:translate-x-1 transition-transform duration-300" />
               </NuxtLink>
             </div>
@@ -109,7 +108,7 @@
           <div class="bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
             <h3 class="text-lg font-bold text-white mb-4 flex items-center">
               <Icon name="heroicons:wrench-screwdriver" class="w-5 h-5 text-blue-400 mr-2" />
-              Technologies maîtrisées
+              {{ t('Outils QA et technologies') }}
             </h3>
             <div class="grid grid-cols-2 gap-3">
               <div 
@@ -118,7 +117,7 @@
                 class="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 group/skill border border-white/10 hover:border-blue-500/30"
               >
                 <div class="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full group-hover/skill:scale-150 transition-transform duration-300"></div>
-                <span class="text-sm text-white/90 font-medium">{{ skill.name }}</span>
+                <span class="text-sm text-white/90 font-medium">{{ t(skill.name) }}</span>
                 <Icon 
                   :name="skill.icon" 
                   class="w-4 h-4 ml-auto text-white/40 group-hover/skill:text-blue-400 transition-colors duration-300"
@@ -134,7 +133,7 @@
           <div class="bg-gradient-to-br from-white/5 to-white/3 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
             <h3 class="text-lg font-bold text-white mb-4 flex items-center">
               <Icon name="heroicons:heart" class="w-5 h-5 text-rose-400 mr-2" />
-              Centres d'intérêt & Passions
+              {{ t('Centres d\'intérêt & Passions') }}
             </h3>
             <div class="flex flex-wrap gap-3">
               <span 
@@ -142,7 +141,7 @@
                 :key="interest" 
                 class="px-4 py-2.5 bg-gradient-to-br from-white/5 to-white/3 text-white/90 rounded-xl text-sm font-medium border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:scale-105 group/interest backdrop-blur-sm"
               >
-                <span class="relative z-10">{{ interest }}</span>
+                <span class="relative z-10">                {{ t(interest) }}</span>
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-xl opacity-0 group-hover/interest:opacity-100 transition-opacity duration-300"></div>
               </span>
             </div>
@@ -154,7 +153,7 @@
               <div class="p-2 rounded-xl bg-gradient-to-r from-blue-500/20 to-blue-400/20 border border-blue-500/30 mr-3">
                 <Icon name="heroicons:briefcase" class="w-5 h-5 text-blue-400" />
               </div>
-              <span>Expérience professionnelle</span>
+              <span>{{ t('Expérience professionnelle') }}</span>
             </h2>
             
             <div class="space-y-8">
@@ -176,10 +175,10 @@
                 <div class="bg-gradient-to-br from-white/5 to-white/3 rounded-xl p-5 border border-white/10 backdrop-blur-sm hover:border-blue-500/30 transition-all duration-500 group-hover/exp:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10">
                   <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
                     <h3 class="text-lg font-semibold text-white group-hover/exp:text-blue-300 transition-colors duration-300">
-                      {{ experience.title }}
+                      {{ t(experience.title) }}
                     </h3>
                     <span class="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-blue-300 rounded-lg text-sm font-medium border border-blue-500/30 mt-1 sm:mt-0 backdrop-blur-sm">
-                      {{ experience.period }}
+                      {{ t(experience.period) }}
                     </span>
                   </div>
                   
@@ -188,7 +187,7 @@
                   </p>
                   
                   <p class="text-white/70 text-sm mb-4 leading-relaxed">
-                    {{ experience.description }}
+                    {{ t(experience.description) }}
                   </p>
                   
                   <div class="flex flex-wrap gap-2">
@@ -197,7 +196,7 @@
                       :key="tech" 
                       class="px-2.5 py-1 bg-white/10 text-white/80 rounded-lg text-xs border border-white/15 hover:border-blue-400/30 hover:bg-white/15 transition-all duration-300 cursor-default group/tech"
                     >
-                      <span class="relative z-10">{{ tech }}</span>
+                      <span class="relative z-10">{{ t(tech) }}</span>
                       <div class="absolute inset-0 bg-blue-500/20 rounded-lg opacity-0 group-hover/tech:opacity-100 transition-opacity duration-300"></div>
                     </span>
                   </div>
@@ -212,7 +211,7 @@
               <div class="p-2 rounded-xl bg-gradient-to-r from-amber-500/20 to-amber-400/20 border border-amber-500/30 mr-3">
                 <Icon name="heroicons:academic-cap" class="w-5 h-5 text-amber-400" />
               </div>
-              <span>Formation académique</span>
+              <span>{{ t('Formation académique') }}</span>
             </h3>
             <div class="space-y-4">
               <div 
@@ -223,16 +222,13 @@
                 <div class="flex items-start justify-between mb-2">
                   <div class="flex-1">
                     <h4 class="font-semibold text-white text-sm group-hover/edu:text-amber-300 transition-colors duration-300">
-                      {{ education.degree }}
+                      {{ t(education.degree) }}
                     </h4>
-                    <p class="text-amber-300/80 text-sm">{{ education.school }}</p>
+                    <p class="text-amber-300/80 text-sm">{{ t(education.school) }}</p>
                   </div>
                   <span class="px-2.5 py-1 bg-amber-500/10 text-amber-300 rounded-lg text-xs border border-amber-500/20">
-                    {{ education.year }}
+                    {{ t(education.year) }}
                   </span>
-                </div>
-                <div class="mt-3 pt-3 border-t border-white/10">
-                  <p class="text-white/60 text-xs">Certifié et diplômé</p>
                 </div>
               </div>
             </div>
@@ -247,7 +243,7 @@
               <!-- Effet de brillance -->
               <div class="absolute inset-0 -translate-x-full group-hover/contact:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
               <Icon name="heroicons:envelope" class="w-5 h-5 relative z-10" />
-              <span class="relative z-10">Me contacter</span>
+              <span class="relative z-10">{{ t('Me contacter') }}</span>
             </NuxtLink>
             
             <a 
@@ -258,7 +254,7 @@
               class="flex-1 px-8 py-3.5 bg-gradient-to-br from-white/5 to-white/3 text-white rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-white/10 transition-all duration-300 transform hover:scale-105 group/download border border-white/10 hover:border-blue-500/30 backdrop-blur-sm"
             >
               <Icon name="heroicons:document-arrow-down" class="w-5 h-5 text-blue-400 group-hover/download:text-blue-300 transition-colors duration-300" />
-              <span>Télécharger CV</span>
+              <span>{{ t('Télécharger CV') }}</span>
             </a>
           </div>
         </div>
@@ -278,6 +274,7 @@
         <!-- Bouton fermeture amélioré -->
         <button 
           @click="showImageModal = false"
+          :aria-label="t('Fermer la fenêtre')"
           class="absolute -top-16 right-0 z-10 p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 hover:bg-white/20 hover:scale-110 transition-all duration-300 group/close"
         >
           <div class="relative w-6 h-6">
@@ -293,7 +290,7 @@
             <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-slate-900 to-slate-800">
               <NuxtImg 
                 src="/tof_pro.jpg" 
-                alt="Photo d'Evariste Credo - Vue agrandie" 
+                :alt="t('Photo d’Evariste Credo - Vue agrandie')"
                 width="800" 
                 height="800" 
                 class="w-full h-auto max-h-[70vh] object-contain"
@@ -313,10 +310,10 @@
             <div class="text-center mt-6 space-y-2">
               <h3 class="text-2xl font-bold text-white">Evariste Credo</h3>
               <p class="text-lg bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-medium">
-                Développeur Full Stack & Architecte
+              {{ t('Testeur QA & développeur web') }}
               </p>
               <p class="text-white/60 text-sm pt-4 border-t border-white/10">
-                Cliquez en dehors de l'image ou appuyez sur <kbd class="px-2 py-1 bg-white/10 rounded text-xs">Échap</kbd> pour fermer
+                {{ t('Cliquez en dehors de l’image ou appuyez sur') }} <kbd class="px-2 py-1 bg-white/10 rounded text-xs">Esc</kbd> {{ t('pour fermer') }}
               </p>
             </div>
           </div>
@@ -327,44 +324,55 @@
 </template>
 
 <script setup>
+const { locale, t } = useSiteLocale()
 
 // État pour le modal
 const showImageModal = ref(false)
 
 // Données pour les compétences avec icônes
 const skills = [
+  { name: 'Tests fonctionnels', icon: 'heroicons:clipboard-document-check' },
+  { name: 'Tests API', icon: 'heroicons:server-stack' },
+  { name: 'Postman', icon: 'simple-icons:postman' },
+  { name: 'Cypress (pratique locale)', icon: 'simple-icons:cypress' },
+  { name: 'CodeceptJS (bases)', icon: 'heroicons:command-line' },
+  { name: 'PHP', icon: 'simple-icons:php' },
+  { name: 'JavaScript', icon: 'simple-icons:javascript' },
   { name: 'Nuxt.js', icon: 'simple-icons:nuxtdotjs' },
   { name: 'Node.js', icon: 'simple-icons:nodedotjs' },
   { name: 'Laravel', icon: 'simple-icons:laravel' },
-  { name: 'PHP', icon: 'simple-icons:php' },
-  { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
+  { name: 'Vue.js', icon: 'simple-icons:vuedotjs' },
+  { name: 'Python (bases)', icon: 'simple-icons:python' },
+  { name: 'API REST', icon: 'heroicons:globe-alt' },
   { name: 'MySQL', icon: 'simple-icons:mysql' },
-  { name: 'Docker', icon: 'simple-icons:docker' },
-  { name: 'Linux', icon: 'simple-icons:linux' },
-  { name: 'Git', icon: 'simple-icons:git' },
-  { name: 'TypeScript', icon: 'simple-icons:typescript' },
 ]
 
 // Centres d'intérêt
 const interests = [
-  'Technologies émergentes',
-  'Open Source',
-  'UI/UX Design',
-  'Intelligence Artificielle',
-  'Photographie',
-  'Musique',
-  'Basketball',
-  'Innovation'
+  'Assurance qualité',
+  'Tests fonctionnels',
+  'Tests API',
+  'Qualité logicielle',
+  'Développement web',
+  'Amélioration continue',
+  'Apprentissage continu'
 ]
 
 // Expériences professionnelles
 const experiences = [
   {
+    title: 'Testeur QA',
+    company: 'OPENSI',
+    period: 'Depuis le 16 février 2026',
+    description: 'Préparation de cas et scénarios de test, vérifications fonctionnelles et API, contrôle des corrections et amélioration des supports de test.',
+    technologies: ['Tests fonctionnels', 'Tests API', 'Postman']
+  },
+  {
     title: 'Développeur web Junior',
     company: 'E-Business Afrique',
     period: 'Mars 2025 - Juin 2025',
     description: 'Développement d\'applications web avec Nuxt.js et Laravel. Test d\'application, gestion des étapes d\'un projet et architecture de systèmes scalables.',
-    technologies: ['Nuxt.Js', 'Laravel', 'MySQL', 'API REST', 'Git']
+    technologies: [    'Nuxt.js', 'Laravel', 'MySQL', 'API REST', 'Git']
   },
   {
     title: 'Entrepreneur en Telecoms et Web',
@@ -378,14 +386,14 @@ const experiences = [
 // Formation
 const educations = [
   {
-    degree: 'Licence en Informatique',
-    school: 'ESGIS-Bénin',
-    year: '2022 - 2025'
+    degree: 'Licence en architecture logicielle',
+    school: 'ESGIS Bénin',
+    year: '2022–2025'
   },
   {
-    degree: 'Entrepreneuriat en Telecoms et Web',
-    school: 'VED - Université d\'Abomey-Calavi',
-    year: '2020 - 2022'
+    degree: 'Formation en développement web',
+    school: 'CVERI-VED',
+    year: '2020–2022'
   },
   {
     degree: 'Baccalauréat Série D',

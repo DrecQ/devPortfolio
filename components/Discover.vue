@@ -28,13 +28,13 @@
       <div class="text-center mb-16 animate-fade-in-up">
         
         <h1 class="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-          Mon <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Univers</span>
+          {{ t('Mon') }} <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{{ t('Univers') }}</span>
         </h1>
         
         <div class="w-32 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-6 rounded-full"></div>
         
         <p class="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
-          De la passion du code à la quête d'excellence
+          {{ t('De la passion du code à la quête d’excellence') }}
         </p>
       </div>
 
@@ -50,14 +50,11 @@
             <div class="p-3 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-400/20 border border-blue-500/30">
               <Icon name="heroicons:sparkles" class="w-6 h-6 text-blue-400" />
             </div>
-            <h2 class="text-2xl font-bold text-white pt-1">Mon Parcours</h2>
+            <h2 class="text-2xl font-bold text-white pt-1">{{ t('Mon Parcours') }}</h2>
           </div>
           
           <p class="text-lg text-white/70 leading-relaxed mb-4">
-            Je m'appelle <span class="font-semibold text-blue-300">Evariste Credo Q.</span> et je suis développeur web passionné par la création de solutions 
-            technologiques qui transforment notre quotidien. Mon parcours est guidé par une conviction profonde : 
-            l'informatique est bien plus qu'une discipline technique, c'est une science qui, à l'image de la médecine, 
-            a le pouvoir de sauver des vies et de résoudre les défis les plus complexes de notre époque.
+            {{ t('Je m’appelle Evariste Credo Q. et je suis développeur web passionné par la création de solutions technologiques qui transforment notre quotidien. Mon parcours est guidé par une conviction profonde : l’informatique est bien plus qu’une discipline technique, c’est une science qui, à l’image de la médecine, a le pouvoir de sauver des vies et de résoudre les défis les plus complexes de notre époque.') }}
           </p>
           
           <!-- Signature -->
@@ -67,7 +64,7 @@
             </div>
             <div>
               <p class="text-sm font-medium text-white">Evariste Credo</p>
-              <p class="text-xs text-white/60">Développeur & Architecte Logiciel</p>
+              <p class="text-xs text-white/60">{{ t('Développeur & Architecte Logiciel') }}</p>
             </div>
           </div>
         </section>
@@ -81,23 +78,22 @@
             <div class="p-3 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-400/20 border border-cyan-500/30">
               <Icon name="heroicons:heart" class="w-6 h-6 text-cyan-400" />
             </div>
-            <h2 class="text-2xl font-bold text-white pt-1">Le Choix de l'Informatique</h2>
+            <h2 class="text-2xl font-bold text-white pt-1">{{ t('Le Choix de l’informatique') }}</h2>
           </div>
           
           <p class="text-white/70 leading-relaxed mb-4">
-            J'ai choisi l'informatique parce que c'est une science qui, tout comme la médecine, <span class="font-semibold text-cyan-300">sauve des vies</span>. 
-            Une seule ligne de code peut changer le monde, résoudre des problèmes complexes et impacter des millions de personnes.
+            {{ t('J’ai choisi l’informatique parce que c’est une science qui, tout comme la médecine,') }} <span class="font-semibold text-cyan-300">{{ t('sauve des vies') }}</span>.
+            {{ t('Une seule ligne de code peut changer le monde, résoudre des problèmes complexes et impacter des millions de personnes.') }}
           </p>
           
           <div class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl p-5 border border-cyan-500/20 mb-4">
             <p class="text-white/80 italic">
-              "Chaque algorithme que nous créons représente un remède potentiel aux défis de notre temps."
+              “{{ t('Chaque algorithme que nous créons représente un remède potentiel aux défis de notre temps.') }}”
             </p>
           </div>
           
           <p class="text-white/70 leading-relaxed">
-            Cette conviction m'anime au quotidien : derrière chaque fonction, chaque interface, chaque système, 
-            se cache la possibilité d'améliorer concrètement la vie des gens.
+            {{ t('Cette conviction m’anime au quotidien : derrière chaque fonction, chaque interface, chaque système, se cache la possibilité d’améliorer concrètement la vie des gens.') }}
           </p>
         </section>
 
@@ -110,7 +106,7 @@
             <div class="p-3 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-400/20 border border-amber-500/30">
               <Icon name="heroicons:star" class="w-6 h-6 text-amber-400" />
             </div>
-            <h2 class="text-2xl font-bold text-white pt-1">Sources d'Inspiration</h2>
+            <h2 class="text-2xl font-bold text-white pt-1">{{ t('Sources d’inspiration') }}</h2>
           </div>
           
           <div class="grid md:grid-cols-2 gap-6 mb-6">
@@ -118,14 +114,14 @@
               <Icon name="heroicons:user-group" class="w-8 h-8 text-amber-400 mb-3" />
               <h3 class="font-bold text-white mb-2">Steve Jobs</h3>
               <p class="text-white/70 text-sm">
-                Sa capacité à transformer des concepts complexes en solutions simples et élégantes m'inspire profondément.
+                {{ t('Sa capacité à transformer des concepts complexes en solutions simples et élégantes m’inspire profondément.') }}
               </p>
             </div>
             <div class="p-5 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-400/10 border border-blue-500/20">
               <Icon name="heroicons:light-bulb" class="w-8 h-8 text-blue-400 mb-3" />
-              <h3 class="font-bold text-white mb-2">La Simplicité</h3>
+              <h3 class="font-bold text-white mb-2">{{ t('La Simplicité') }}</h3>
               <p class="text-white/70 text-sm">
-                "La simplicité est la sophistication suprême" - Cette citation guide ma démarche créative.
+                “{{ t('La simplicité est la sophistication suprême') }}” — {{ t('Cette citation guide ma démarche créative.') }}
               </p>
             </div>
           </div>
@@ -140,7 +136,7 @@
             <div class="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-400/20 border border-purple-500/30">
               <Icon name="heroicons:shield-check" class="w-6 h-6 text-purple-400" />
             </div>
-            <h2 class="text-2xl font-bold text-white pt-1">Ma Philosophie de Vie</h2>
+            <h2 class="text-2xl font-bold text-white pt-1">{{ t('Ma Philosophie de Vie') }}</h2>
           </div>
           
           <div class="grid md:grid-cols-3 gap-6 mb-6">
@@ -152,9 +148,9 @@
               <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-400/20 border border-blue-500/30 flex items-center justify-center group-hover/principle:scale-110 transition-transform duration-300">
                 <Icon :name="principle.icon" class="w-6 h-6 text-blue-400" />
               </div>
-              <h3 class="text-lg font-semibold text-white mb-3">{{ principle.name }}</h3>
+              <h3 class="text-lg font-semibold text-white mb-3">{{ t(principle.name) }}</h3>
               <p class="text-white/60 text-sm leading-relaxed">
-                {{ principle.description }}
+                {{ t(principle.description) }}
               </p>
             </div>
           </div>
@@ -169,12 +165,11 @@
             <div class="p-3 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-400/20 border border-emerald-500/30">
               <Icon name="heroicons:rocket-launch" class="w-6 h-6 text-emerald-400" />
             </div>
-            <h2 class="text-2xl font-bold text-white pt-1">Mon Parcours d'Excellence</h2>
+            <h2 class="text-2xl font-bold text-white pt-1">{{ t('Mon Parcours d’excellence') }}</h2>
           </div>
           
           <p class="text-white/70 leading-relaxed mb-6">
-            Mon ambition est de devenir un <span class="font-semibold text-emerald-300">expert accompli</span> dans les domaines du développement, 
-            du DevOps, de la gestion de projet, du product management et du QA testing.
+            {{ t('Mon ambition est de continuer à développer mes compétences dans les domaines du développement, du DevOps, de la gestion de projet, du product management et de l’assurance qualité.') }}
           </p>
           
           <!-- Liste des objectifs -->
@@ -184,8 +179,8 @@
                 <Icon :name="goal.icon" class="w-3 h-3 text-white" />
               </div>
               <div>
-                <h3 class="font-medium text-white mb-1">{{ goal.name }}</h3>
-                <p class="text-sm text-white/60">{{ goal.description }}</p>
+                <h3 class="font-medium text-white mb-1">{{ t(goal.name) }}</h3>
+                <p class="text-sm text-white/60">{{ t(goal.description) }}</p>
               </div>
             </div>
           </div>
@@ -200,11 +195,11 @@
             <div class="p-3 rounded-xl bg-gradient-to-br from-sky-500/20 to-sky-400/20 border border-sky-500/30">
               <Icon name="heroicons:academic-cap" class="w-6 h-6 text-sky-400" />
             </div>
-            <h2 class="text-2xl font-bold text-white pt-1">Objectifs de Compétences</h2>
+            <h2 class="text-2xl font-bold text-white pt-1">{{ t('Objectifs de compétences') }}</h2>
           </div>
           
           <p class="text-white/70 leading-relaxed mb-6">
-            Je vise à maîtriser les compétences suivantes pour atteindre l'excellence dans mon domaine :
+            {{ t('Je souhaite développer les compétences suivantes et continuer à progresser dans mon domaine :') }}
           </p>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -217,10 +212,10 @@
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-400/20 border border-blue-500/30 flex items-center justify-center">
                   <Icon :name="targetSkill.icon" class="w-5 h-5 text-blue-400" />
                 </div>
-                <h3 class="font-bold text-white">{{ targetSkill.name }}</h3>
+                <h3 class="font-bold text-white">{{ t(targetSkill.name) }}</h3>
               </div>
               <p class="text-white/60 text-sm">
-                {{ targetSkill.description }}
+                {{ t(targetSkill.description) }}
               </p>
             </div>
           </div>
@@ -235,7 +230,7 @@
             <div class="p-3 rounded-xl bg-gradient-to-br from-rose-500/20 to-rose-400/20 border border-rose-500/30">
               <Icon name="heroicons:musical-note" class="w-6 h-6 text-rose-400" />
             </div>
-            <h2 class="text-2xl font-bold text-white pt-1">Univers Personnels</h2>
+            <h2 class="text-2xl font-bold text-white pt-1">{{ t('Univers personnels') }}</h2>
           </div>
           
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -245,7 +240,7 @@
               class="text-center p-5 rounded-xl bg-gradient-to-br from-white/5 to-white/3 border border-white/10 hover:border-rose-500/30 transition-all duration-300 hover:scale-105 group/interest"
             >
               <Icon :name="interest.icon" class="w-8 h-8 mx-auto mb-3 text-white/70 group-hover/interest:text-rose-400 transition-colors duration-300" />
-              <p class="text-white text-sm font-medium">{{ interest.name }}</p>
+              <p class="text-white text-sm font-medium">{{ t(interest.name) }}</p>
             </div>
           </div>
         </section>
@@ -259,18 +254,16 @@
             <div class="p-3 rounded-xl bg-gradient-to-br from-violet-500/20 to-violet-400/20 border border-violet-500/30">
               <Icon name="heroicons:brain" class="w-6 h-6 text-violet-400" />
             </div>
-            <h2 class="text-2xl font-bold text-white pt-1">Vision de l'Intelligence Artificielle</h2>
+            <h2 class="text-2xl font-bold text-white pt-1">{{ t('Vision de l’intelligence artificielle') }}</h2>
           </div>
           
           <p class="text-white/70 leading-relaxed mb-4">
-            L'intelligence artificielle représente pour moi un <span class="font-semibold text-violet-300">outil révolutionnaire</span> qui transforme 
-            fondamentalement notre métier.
+            {{ t('L’intelligence artificielle représente pour moi un') }} <span class="font-semibold text-violet-300">{{ t('outil révolutionnaire') }}</span> {{ t('qui transforme fondamentalement notre métier.') }}
           </p>
           
           <div class="bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-xl p-5 border border-violet-500/20">
             <p class="text-white/80 text-sm">
-              Je me consacre à l'apprentissage de ces technologies émergentes pour créer des solutions 
-              plus intelligentes, plus efficaces et repousser les limites de ce qui est technologiquement possible.
+              {{ t('Je me consacre à l’apprentissage de ces technologies émergentes pour créer des solutions plus intelligentes, plus efficaces et repousser les limites de ce qui est technologiquement possible.') }}
             </p>
           </div>
         </section>
@@ -285,11 +278,10 @@
           <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000 delay-300"></div>
           
           <div class="relative z-10">
-            <h2 class="text-2xl font-bold text-white mb-6 text-center">Prochain Chapitre</h2>
+            <h2 class="text-2xl font-bold text-white mb-6 text-center">{{ t('Prochain chapitre') }}</h2>
             
             <p class="text-white/70 leading-relaxed mb-6 text-center">
-              Je suis constamment à la recherche de nouveaux défis et d'opportunités de collaboration 
-              avec des équipes visionnaires.
+              {{ t('Je suis constamment à la recherche de nouveaux défis et d’opportunités de collaboration avec des équipes visionnaires.') }}
             </p>
             
             <div class="text-center">
@@ -300,7 +292,7 @@
                 <!-- Effet de brillance -->
                 <div class="absolute inset-0 -translate-x-full group-hover/contact:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
                 <Icon name="heroicons:chat-bubble-left-right" class="w-5 h-5 relative z-10" />
-                <span class="relative z-10">Échangeons sur nos visions</span>
+                <span class="relative z-10">{{ t('Échangeons sur nos visions') }}</span>
               </NuxtLink>
             </div>
           </div>
@@ -311,6 +303,8 @@
 </template>
 
 <script setup>
+const { t } = useSiteLocale()
+
 // Principes de vie
 const principles = [
   {
